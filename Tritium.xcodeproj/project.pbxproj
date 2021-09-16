@@ -14,6 +14,7 @@
 		487C326426F3220000FC7459 /* TritiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326326F3220000FC7459 /* TritiumTests.swift */; };
 		487C326E26F3220000FC7459 /* TritiumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326D26F3220000FC7459 /* TritiumUITests.swift */; };
 		487C327026F3220000FC7459 /* TritiumUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */; };
+		48FDE47426F32C9300A8238B /* Makt in Frameworks */ = {isa = PBXBuildFile; productRef = 48FDE47326F32C9300A8238B /* Makt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		487C326926F3220000FC7459 /* TritiumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		487C326D26F3220000FC7459 /* TritiumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumUITests.swift; sourceTree = "<group>"; };
 		487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		487C328326F323C800FC7459 /* Makt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Makt; path = ../Makt; sourceTree = "<group>"; };
+		48FDE47726F3488800A8238B /* Tritium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tritium.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48FDE47426F32C9300A8238B /* Makt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +78,12 @@
 		487C324626F321FB00FC7459 = {
 			isa = PBXGroup;
 			children = (
+				487C328026F3231000FC7459 /* Packages */,
 				487C325126F321FB00FC7459 /* Tritium */,
 				487C326226F3220000FC7459 /* TritiumTests */,
 				487C326C26F3220000FC7459 /* TritiumUITests */,
 				487C325026F321FB00FC7459 /* Products */,
+				487C327D26F3229000FC7459 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +100,7 @@
 		487C325126F321FB00FC7459 /* Tritium */ = {
 			isa = PBXGroup;
 			children = (
+				48FDE47726F3488800A8238B /* Tritium.entitlements */,
 				487C325226F321FB00FC7459 /* TritiumApp.swift */,
 				487C325426F321FB00FC7459 /* ContentView.swift */,
 				487C325626F321FF00FC7459 /* Assets.xcassets */,
@@ -127,6 +134,21 @@
 			path = TritiumUITests;
 			sourceTree = "<group>";
 		};
+		487C327D26F3229000FC7459 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		487C328026F3231000FC7459 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				487C328326F323C800FC7459 /* Makt */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,8 +163,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				48FDE47626F32C9D00A8238B /* PBXTargetDependency */,
 			);
 			name = Tritium;
+			packageProductDependencies = (
+				48FDE47326F32C9300A8238B /* Makt */,
+			);
 			productName = Tritium;
 			productReference = 487C324F26F321FB00FC7459 /* Tritium.app */;
 			productType = "com.apple.product-type.application";
@@ -292,6 +318,10 @@
 			target = 487C324E26F321FB00FC7459 /* Tritium */;
 			targetProxy = 487C326A26F3220000FC7459 /* PBXContainerItemProxy */;
 		};
+		48FDE47626F32C9D00A8238B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 48FDE47526F32C9D00A8238B /* Makt */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -415,11 +445,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Tritium/Tritium.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tritium/Preview Content\"";
-				ENABLE_APP_SANDBOX = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -432,6 +464,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.Tritium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -442,11 +475,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Tritium/Tritium.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tritium/Preview Content\"";
-				ENABLE_APP_SANDBOX = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -459,6 +494,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.Tritium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -596,6 +632,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48FDE47326F32C9300A8238B /* Makt */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Makt;
+		};
+		48FDE47526F32C9D00A8238B /* Makt */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Makt;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 487C324726F321FB00FC7459 /* Project object */;
 }
