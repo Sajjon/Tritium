@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325226F321FB00FC7459 /* TritiumApp.swift */; };
+		487C325526F321FB00FC7459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325426F321FB00FC7459 /* ContentView.swift */; };
+		487C325726F321FF00FC7459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325626F321FF00FC7459 /* Assets.xcassets */; };
+		487C325A26F321FF00FC7459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325926F321FF00FC7459 /* Preview Assets.xcassets */; };
+		487C326426F3220000FC7459 /* TritiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326326F3220000FC7459 /* TritiumTests.swift */; };
+		487C326E26F3220000FC7459 /* TritiumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326D26F3220000FC7459 /* TritiumUITests.swift */; };
+		487C327026F3220000FC7459 /* TritiumUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		487C326026F3220000FC7459 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 487C324726F321FB00FC7459 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 487C324E26F321FB00FC7459;
+			remoteInfo = Tritium;
+		};
+		487C326A26F3220000FC7459 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 487C324726F321FB00FC7459 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 487C324E26F321FB00FC7459;
+			remoteInfo = Tritium;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		487C324F26F321FB00FC7459 /* Tritium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tritium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		487C325226F321FB00FC7459 /* TritiumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumApp.swift; sourceTree = "<group>"; };
+		487C325426F321FB00FC7459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		487C325626F321FF00FC7459 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		487C325926F321FF00FC7459 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		487C325F26F3220000FC7459 /* TritiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		487C326326F3220000FC7459 /* TritiumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumTests.swift; sourceTree = "<group>"; };
+		487C326926F3220000FC7459 /* TritiumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		487C326D26F3220000FC7459 /* TritiumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumUITests.swift; sourceTree = "<group>"; };
+		487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		487C324C26F321FB00FC7459 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487C325C26F3220000FC7459 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487C326626F3220000FC7459 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		487C324626F321FB00FC7459 = {
+			isa = PBXGroup;
+			children = (
+				487C325126F321FB00FC7459 /* Tritium */,
+				487C326226F3220000FC7459 /* TritiumTests */,
+				487C326C26F3220000FC7459 /* TritiumUITests */,
+				487C325026F321FB00FC7459 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		487C325026F321FB00FC7459 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				487C324F26F321FB00FC7459 /* Tritium.app */,
+				487C325F26F3220000FC7459 /* TritiumTests.xctest */,
+				487C326926F3220000FC7459 /* TritiumUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		487C325126F321FB00FC7459 /* Tritium */ = {
+			isa = PBXGroup;
+			children = (
+				487C325226F321FB00FC7459 /* TritiumApp.swift */,
+				487C325426F321FB00FC7459 /* ContentView.swift */,
+				487C325626F321FF00FC7459 /* Assets.xcassets */,
+				487C325826F321FF00FC7459 /* Preview Content */,
+			);
+			path = Tritium;
+			sourceTree = "<group>";
+		};
+		487C325826F321FF00FC7459 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				487C325926F321FF00FC7459 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		487C326226F3220000FC7459 /* TritiumTests */ = {
+			isa = PBXGroup;
+			children = (
+				487C326326F3220000FC7459 /* TritiumTests.swift */,
+			);
+			path = TritiumTests;
+			sourceTree = "<group>";
+		};
+		487C326C26F3220000FC7459 /* TritiumUITests */ = {
+			isa = PBXGroup;
+			children = (
+				487C326D26F3220000FC7459 /* TritiumUITests.swift */,
+				487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */,
+			);
+			path = TritiumUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		487C324E26F321FB00FC7459 /* Tritium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 487C327326F3220000FC7459 /* Build configuration list for PBXNativeTarget "Tritium" */;
+			buildPhases = (
+				487C324B26F321FB00FC7459 /* Sources */,
+				487C324C26F321FB00FC7459 /* Frameworks */,
+				487C324D26F321FB00FC7459 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tritium;
+			productName = Tritium;
+			productReference = 487C324F26F321FB00FC7459 /* Tritium.app */;
+			productType = "com.apple.product-type.application";
+		};
+		487C325E26F3220000FC7459 /* TritiumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 487C327626F3220000FC7459 /* Build configuration list for PBXNativeTarget "TritiumTests" */;
+			buildPhases = (
+				487C325B26F3220000FC7459 /* Sources */,
+				487C325C26F3220000FC7459 /* Frameworks */,
+				487C325D26F3220000FC7459 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				487C326126F3220000FC7459 /* PBXTargetDependency */,
+			);
+			name = TritiumTests;
+			productName = TritiumTests;
+			productReference = 487C325F26F3220000FC7459 /* TritiumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		487C326826F3220000FC7459 /* TritiumUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 487C327926F3220000FC7459 /* Build configuration list for PBXNativeTarget "TritiumUITests" */;
+			buildPhases = (
+				487C326526F3220000FC7459 /* Sources */,
+				487C326626F3220000FC7459 /* Frameworks */,
+				487C326726F3220000FC7459 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				487C326B26F3220000FC7459 /* PBXTargetDependency */,
+			);
+			name = TritiumUITests;
+			productName = TritiumUITests;
+			productReference = 487C326926F3220000FC7459 /* TritiumUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		487C324726F321FB00FC7459 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					487C324E26F321FB00FC7459 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					487C325E26F3220000FC7459 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 487C324E26F321FB00FC7459;
+					};
+					487C326826F3220000FC7459 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 487C324E26F321FB00FC7459;
+					};
+				};
+			};
+			buildConfigurationList = 487C324A26F321FB00FC7459 /* Build configuration list for PBXProject "Tritium" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 487C324626F321FB00FC7459;
+			productRefGroup = 487C325026F321FB00FC7459 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				487C324E26F321FB00FC7459 /* Tritium */,
+				487C325E26F3220000FC7459 /* TritiumTests */,
+				487C326826F3220000FC7459 /* TritiumUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		487C324D26F321FB00FC7459 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487C325A26F321FF00FC7459 /* Preview Assets.xcassets in Resources */,
+				487C325726F321FF00FC7459 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487C325D26F3220000FC7459 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487C326726F3220000FC7459 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		487C324B26F321FB00FC7459 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487C325526F321FB00FC7459 /* ContentView.swift in Sources */,
+				487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487C325B26F3220000FC7459 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487C326426F3220000FC7459 /* TritiumTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487C326526F3220000FC7459 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487C326E26F3220000FC7459 /* TritiumUITests.swift in Sources */,
+				487C327026F3220000FC7459 /* TritiumUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		487C326126F3220000FC7459 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 487C324E26F321FB00FC7459 /* Tritium */;
+			targetProxy = 487C326026F3220000FC7459 /* PBXContainerItemProxy */;
+		};
+		487C326B26F3220000FC7459 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 487C324E26F321FB00FC7459 /* Tritium */;
+			targetProxy = 487C326A26F3220000FC7459 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		487C327126F3220000FC7459 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		487C327226F3220000FC7459 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		487C327426F3220000FC7459 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Tritium/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.Tritium;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		487C327526F3220000FC7459 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Tritium/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.Tritium;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		487C327726F3220000FC7459 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.TritiumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tritium.app/Contents/MacOS/Tritium";
+			};
+			name = Debug;
+		};
+		487C327826F3220000FC7459 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.TritiumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tritium.app/Contents/MacOS/Tritium";
+			};
+			name = Release;
+		};
+		487C327A26F3220000FC7459 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.TritiumUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Tritium;
+			};
+			name = Debug;
+		};
+		487C327B26F3220000FC7459 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.TritiumUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Tritium;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		487C324A26F321FB00FC7459 /* Build configuration list for PBXProject "Tritium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487C327126F3220000FC7459 /* Debug */,
+				487C327226F3220000FC7459 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		487C327326F3220000FC7459 /* Build configuration list for PBXNativeTarget "Tritium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487C327426F3220000FC7459 /* Debug */,
+				487C327526F3220000FC7459 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		487C327626F3220000FC7459 /* Build configuration list for PBXNativeTarget "TritiumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487C327726F3220000FC7459 /* Debug */,
+				487C327826F3220000FC7459 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		487C327926F3220000FC7459 /* Build configuration list for PBXNativeTarget "TritiumUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487C327A26F3220000FC7459 /* Debug */,
+				487C327B26F3220000FC7459 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 487C324726F321FB00FC7459 /* Project object */;
+}
