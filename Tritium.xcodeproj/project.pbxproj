@@ -47,6 +47,7 @@
 		487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		487C328326F323C800FC7459 /* Makt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Makt; path = ../Makt; sourceTree = "<group>"; };
 		48FDE47726F3488800A8238B /* Tritium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tritium.entitlements; sourceTree = "<group>"; };
+		48FDE47826F3652100A8238B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 		487C324626F321FB00FC7459 = {
 			isa = PBXGroup;
 			children = (
+				48FDE47826F3652100A8238B /* README.md */,
 				487C328026F3231000FC7459 /* Packages */,
 				487C325126F321FB00FC7459 /* Tritium */,
 				487C326226F3220000FC7459 /* TritiumTests */,
