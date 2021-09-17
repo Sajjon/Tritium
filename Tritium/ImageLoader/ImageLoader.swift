@@ -35,8 +35,6 @@ extension ImageLoader {
         case .rawRGBPixelData(let data):
             pixelData = data
         }
-  
-
         
         return Future { promise in
             DispatchQueue(label: "ImageLoader", qos: .background).async { [self] in
@@ -51,14 +49,15 @@ extension ImageLoader {
                             }
                             return pixels
                         } else {
-                            assert(pixelData.count.isMultiple(of: 4))
-                            let pixels: [UInt32] = Array<UInt8>(pixelData).chunked(into: 4).map { (chunk: [UInt8]) -> UInt32 in
-                                assert(chunk.count == 4)
+                            let bytesPerPixel = 3
+                            assert(pixelData.count.isMultiple(of: bytesPerPixel))
+                            let pixels: [UInt32] = Array<UInt8>(pixelData).chunked(into: bytesPerPixel).map { (chunk: [UInt8]) -> UInt32 in
+                                assert(chunk.count == bytesPerPixel)
                                 var data = Data()
-                                data.append(chunk[0]) // red
+                                data.append(chunk[2]) // red
                                 data.append(chunk[1]) // green
-                                data.append(chunk[2]) // blue
-                                data.append(chunk[3]) // alpha
+                                data.append(chunk[0]) // blue
+                                data.append(255) // Alpha of 255
                                 data.reverse() // fix endianess
                                 return data.withUnsafeBytes { $0.load(as: UInt32.self) }
                             }
