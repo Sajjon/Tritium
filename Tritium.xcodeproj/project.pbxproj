@@ -13,11 +13,11 @@
 		487C325A26F321FF00FC7459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325926F321FF00FC7459 /* Preview Assets.xcassets */; };
 		487C326426F3220000FC7459 /* TritiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326326F3220000FC7459 /* TritiumTests.swift */; };
 		48FDE47426F32C9300A8238B /* Makt in Frameworks */ = {isa = PBXBuildFile; productRef = 48FDE47326F32C9300A8238B /* Makt */; };
-		48FDE47A26F45F0B00A8238B /* CGImageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47926F45F0B00A8238B /* CGImageTools.swift */; };
+		48FDE47A26F45F0B00A8238B /* CGContext+FromPixelMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47926F45F0B00A8238B /* CGContext+FromPixelMatrix.swift */; };
 		48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47B26F47A9300A8238B /* ContentView.swift */; };
 		48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47E26F47AE800A8238B /* View+Extension.swift */; };
 		48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48026F47B2100A8238B /* GameFilesView.swift */; };
-		48FDE48626F47B6100A8238B /* AssetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48526F47B6100A8238B /* AssetLoader.swift */; };
+		48FDE48626F47B6100A8238B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48526F47B6100A8238B /* ImageLoader.swift */; };
 		48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48826F4C78500A8238B /* Data+Extensions.swift */; };
 		48FDE48C26F4C82600A8238B /* AssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48B26F4C82600A8238B /* AssetView.swift */; };
 /* End PBXBuildFile section */
@@ -42,11 +42,11 @@
 		487C326326F3220000FC7459 /* TritiumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumTests.swift; sourceTree = "<group>"; };
 		487C328326F323C800FC7459 /* Makt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Makt; path = ../Makt; sourceTree = "<group>"; };
 		48FDE47826F3652100A8238B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		48FDE47926F45F0B00A8238B /* CGImageTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageTools.swift; sourceTree = "<group>"; };
+		48FDE47926F45F0B00A8238B /* CGContext+FromPixelMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGContext+FromPixelMatrix.swift"; sourceTree = "<group>"; };
 		48FDE47B26F47A9300A8238B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		48FDE47E26F47AE800A8238B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		48FDE48026F47B2100A8238B /* GameFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilesView.swift; sourceTree = "<group>"; };
-		48FDE48526F47B6100A8238B /* AssetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetLoader.swift; sourceTree = "<group>"; };
+		48FDE48526F47B6100A8238B /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		48FDE48826F4C78500A8238B /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		48FDE48B26F4C82600A8238B /* AssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +96,7 @@
 			children = (
 				48FDE48A26F4C81E00A8238B /* Views */,
 				48FDE48726F4C77C00A8238B /* Extensions */,
-				48FDE48426F47B5200A8238B /* AssetLoader */,
+				48FDE48426F47B5200A8238B /* ImageLoader */,
 				48FDE48326F47B4400A8238B /* Scenes */,
 				48FDE48226F47B3600A8238B /* App */,
 				48FDE47D26F47ADB00A8238B /* View+Extension */,
@@ -163,13 +163,13 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		48FDE48426F47B5200A8238B /* AssetLoader */ = {
+		48FDE48426F47B5200A8238B /* ImageLoader */ = {
 			isa = PBXGroup;
 			children = (
-				48FDE47926F45F0B00A8238B /* CGImageTools.swift */,
-				48FDE48526F47B6100A8238B /* AssetLoader.swift */,
+				48FDE47926F45F0B00A8238B /* CGContext+FromPixelMatrix.swift */,
+				48FDE48526F47B6100A8238B /* ImageLoader.swift */,
 			);
-			path = AssetLoader;
+			path = ImageLoader;
 			sourceTree = "<group>";
 		};
 		48FDE48726F4C77C00A8238B /* Extensions */ = {
@@ -295,11 +295,11 @@
 				48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */,
 				487C325526F321FB00FC7459 /* ConfigView.swift in Sources */,
 				48FDE48C26F4C82600A8238B /* AssetView.swift in Sources */,
-				48FDE47A26F45F0B00A8238B /* CGImageTools.swift in Sources */,
+				48FDE47A26F45F0B00A8238B /* CGContext+FromPixelMatrix.swift in Sources */,
 				48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */,
 				48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */,
 				48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */,
-				48FDE48626F47B6100A8238B /* AssetLoader.swift in Sources */,
+				48FDE48626F47B6100A8238B /* ImageLoader.swift in Sources */,
 				487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

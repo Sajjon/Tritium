@@ -50,7 +50,7 @@ extension GameFilesView {
                     }
                 }
             case .opened(let loadedAsset):
-                AssetView(loadedAsset: loadedAsset)
+                AssetView(loadedAsset: loadedAsset, imageLoader: viewModel.imageLoader)
             }
         }
        
@@ -66,13 +66,16 @@ extension GameFilesView {
         private var cancellables = Set<AnyCancellable>()
         private let assetLoader: AssetLoader
         private let archiveLoader: ArchiveLoader
+        let imageLoader: ImageLoader
 
         init(
             assetLoader: AssetLoader,
-            archiveLoader: ArchiveLoader = .init()
+            archiveLoader: ArchiveLoader = .init(),
+            imageLoader: ImageLoader
         ) {
             self.assetLoader = assetLoader
             self.archiveLoader = archiveLoader
+            self.imageLoader = imageLoader
         }
     }
 }
@@ -97,8 +100,8 @@ extension GameFilesView {
 
 // MARK: ViewModel Init
 extension GameFilesView.ViewModel {
-    convenience init(config: Config) {
-        self.init(assetLoader: .init(config: config))
+    convenience init(config: Config, imageLoader: ImageLoader = .init()) {
+        self.init(assetLoader: .init(config: config), imageLoader: imageLoader)
     }
 }
 
@@ -115,7 +118,7 @@ extension GameFilesView.ViewModel {
 // MARK: Load
 extension GameFilesView.ViewModel {
     func loadAssets() {
-        defer { state = .loading(.assetList) }
+        state = .loading(.assetList)
         
         assetLoader.loadAll()
             .receive(on: RunLoop.main)
