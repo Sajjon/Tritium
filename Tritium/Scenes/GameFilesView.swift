@@ -10,39 +10,7 @@ import Malm
 import Guld
 import Combine
 
-extension Int {
-    
-    static let mega: Self = Self.kilo * .kilo
-    static let kilo: Self = 1_000
-
-}
-
-extension Data {
-    var sizeString: String {
-        let bytes = count
-        if bytes >= .mega {
-            return "\(megabytes) mb"
-        }
-        if bytes >= .kilo {
-            return "\(kilobytes) kb"
-        }
-        
-        return "\(bytes) bytes"
-    }
-    
-    var megabytes: Int {
-        count / .mega
-    }
-    
-    var kilobytes: Int {
-        count / .kilo
-    }
-}
-
-extension AssetFile: Identifiable {
-    public var id: String { fileName }
-}
-
+// MARK: GameFilesView
 struct GameFilesView: View {
     
     @ObservedObject private var viewModel: ViewModel
@@ -50,75 +18,147 @@ struct GameFilesView: View {
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
-    
+}
+
+// MARK: GameFilesView Init
+extension GameFilesView {
     init(config: Config) {
         self.init(viewModel: .init(config: config))
     }
+}
+
+// MARK: View
+extension GameFilesView {
     
     var body: some View {
         Group {
-            
             switch viewModel.state {
             case .error(let error):
                 Text("Error loading assets: \(String(describing: error))")
-            case .loading:
-                Text("Loading assets...")
+            case .loading(let request):
+                Text("Loading \(String(describing: request))...")
             case .idle:
                 Button("Load assets") {
                     viewModel.loadAssets()
                 }
             case .loaded(let assets):
-                VStack {
+                VStack(spacing: 40) {
                     ForEach(assets) { assetFile in
-                        Text("\(assetFile.fileName) (#\(assetFile.data.sizeString))")
+                        Button("\(assetFile.fileName) (#\(assetFile.data.sizeString))") {
+                            viewModel.open(assetFile: assetFile)
+                        }.padding()
                     }
                 }
+            case .opened(let loadedAsset):
+                AssetView(loadedAsset: loadedAsset)
             }
         }
        
     }
 }
 
+// MARK: ViewModel
 extension GameFilesView {
     final class ViewModel: ObservableObject {
-        enum LoadingState {
-            case idle
-            case loading
-            case loaded([AssetFile])
-            case error(AssetLoader.Error)
-        }
-        
-        private var cancellables = Set<AnyCancellable>()
-        
+
         @Published var state: LoadingState = .idle
         
+        private var cancellables = Set<AnyCancellable>()
         private let assetLoader: AssetLoader
-        init(assetLoader: AssetLoader) {
+        private let archiveLoader: ArchiveLoader
+
+        init(
+            assetLoader: AssetLoader,
+            archiveLoader: ArchiveLoader = .init()
+        ) {
             self.assetLoader = assetLoader
+            self.archiveLoader = archiveLoader
         }
     }
 }
 
+// MARK: ViewModel LoadingState
+extension GameFilesView {
+    enum LoadingState {
+        
+        enum UserRequest: Equatable {
+            case assetList
+            case assetFile(AssetFile)
+        }
+        
+        case idle
+        case loading(UserRequest)
+        case loaded([AssetFile])
+        case error(GameFilesView.ViewModel.Error)
+        case opened(LoadedAsset)
+    }
+    
+}
+
+// MARK: ViewModel Init
 extension GameFilesView.ViewModel {
     convenience init(config: Config) {
         self.init(assetLoader: .init(config: config))
     }
 }
 
+// MARK: ViewModel Error
+extension GameFilesView.ViewModel {
+    
+    enum Error: Swift.Error {
+        case unsupportedAsset(kind: String)
+        case failedToLoadAssetList(AssetLoader.Error)
+        case failedToOpenArchive(ArchiveLoader.Error)
+    }
+}
+
+// MARK: Load
 extension GameFilesView.ViewModel {
     func loadAssets() {
-        state = .loading
+        defer { state = .loading(.assetList) }
+        
         assetLoader.loadAll()
             .receive(on: RunLoop.main)
             .sink { [self] completion in
-            switch completion {
-            case .failure(let error):
-                state = .error(error)
-            case .finished: break
-            }
-        } receiveValue: { [self] assetFiles in
-            state = .loaded(assetFiles)
-        }.store(in: &cancellables)
-
+                switch completion {
+                case .failure(let error):
+                    state = .error(.failedToLoadAssetList(error))
+                case .finished: break
+                }
+            } receiveValue: { [self] assetFiles in
+                state = .loaded(assetFiles)
+            }.store(in: &cancellables)
     }
+}
+
+// MARK: Open
+extension GameFilesView.ViewModel {
+    func open(assetFile: AssetFile) {
+        defer { state = .loading(.assetFile(assetFile)) }
+        
+        switch assetFile.kind {
+        case .archive:
+            archiveLoader.loadArchive(assetFile: assetFile)
+                .receive(on: RunLoop.main)
+                .sink { [self] completion in
+                    switch completion {
+                    case .failure(let error):
+                        state = .error(.failedToOpenArchive(error))
+                    case .finished: break
+                    }
+                } receiveValue: { [self] loadedAsset in
+                    state = .opened(loadedAsset)
+                }.store(in: &cancellables)
+        case .sound:
+            state = .error(.unsupportedAsset(kind: "sound"))
+        case .video:
+            state = .error(.unsupportedAsset(kind: "video"))
+        }
+        
+    }
+}
+
+// MARK: AssetFile + ID
+extension AssetFile: Identifiable {
+    public var id: String { fileName }
 }

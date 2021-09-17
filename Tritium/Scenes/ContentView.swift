@@ -21,6 +21,6 @@ struct ContentView: View {
             }
         }
         .font(.largeTitle)
-        .frame(width: 1024, height: 512)
+        .frame(width: 2048, height: 1024)
     }
 }
