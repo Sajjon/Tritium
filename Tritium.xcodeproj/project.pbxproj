@@ -12,21 +12,16 @@
 		487C325726F321FF00FC7459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325626F321FF00FC7459 /* Assets.xcassets */; };
 		487C325A26F321FF00FC7459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325926F321FF00FC7459 /* Preview Assets.xcassets */; };
 		487C326426F3220000FC7459 /* TritiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326326F3220000FC7459 /* TritiumTests.swift */; };
-		487C326E26F3220000FC7459 /* TritiumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326D26F3220000FC7459 /* TritiumUITests.swift */; };
-		487C327026F3220000FC7459 /* TritiumUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */; };
 		48FDE47426F32C9300A8238B /* Makt in Frameworks */ = {isa = PBXBuildFile; productRef = 48FDE47326F32C9300A8238B /* Makt */; };
 		48FDE47A26F45F0B00A8238B /* CGImageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47926F45F0B00A8238B /* CGImageTools.swift */; };
+		48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47B26F47A9300A8238B /* ContentView.swift */; };
+		48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47E26F47AE800A8238B /* View+Extension.swift */; };
+		48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48026F47B2100A8238B /* GameFilesView.swift */; };
+		48FDE48626F47B6100A8238B /* AssetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48526F47B6100A8238B /* AssetLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		487C326026F3220000FC7459 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 487C324726F321FB00FC7459 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 487C324E26F321FB00FC7459;
-			remoteInfo = Tritium;
-		};
-		487C326A26F3220000FC7459 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 487C324726F321FB00FC7459 /* Project object */;
 			proxyType = 1;
@@ -43,13 +38,13 @@
 		487C325926F321FF00FC7459 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		487C325F26F3220000FC7459 /* TritiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		487C326326F3220000FC7459 /* TritiumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumTests.swift; sourceTree = "<group>"; };
-		487C326926F3220000FC7459 /* TritiumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		487C326D26F3220000FC7459 /* TritiumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumUITests.swift; sourceTree = "<group>"; };
-		487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		487C328326F323C800FC7459 /* Makt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Makt; path = ../Makt; sourceTree = "<group>"; };
-		48FDE47726F3488800A8238B /* Tritium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tritium.entitlements; sourceTree = "<group>"; };
 		48FDE47826F3652100A8238B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		48FDE47926F45F0B00A8238B /* CGImageTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageTools.swift; sourceTree = "<group>"; };
+		48FDE47B26F47A9300A8238B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		48FDE47E26F47AE800A8238B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		48FDE48026F47B2100A8238B /* GameFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilesView.swift; sourceTree = "<group>"; };
+		48FDE48526F47B6100A8238B /* AssetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +63,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		487C326626F3220000FC7459 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,7 +73,6 @@
 				487C328026F3231000FC7459 /* Packages */,
 				487C325126F321FB00FC7459 /* Tritium */,
 				487C326226F3220000FC7459 /* TritiumTests */,
-				487C326C26F3220000FC7459 /* TritiumUITests */,
 				487C325026F321FB00FC7459 /* Products */,
 				487C327D26F3229000FC7459 /* Frameworks */,
 			);
@@ -96,7 +83,6 @@
 			children = (
 				487C324F26F321FB00FC7459 /* Tritium.app */,
 				487C325F26F3220000FC7459 /* TritiumTests.xctest */,
-				487C326926F3220000FC7459 /* TritiumUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,10 +90,10 @@
 		487C325126F321FB00FC7459 /* Tritium */ = {
 			isa = PBXGroup;
 			children = (
-				48FDE47726F3488800A8238B /* Tritium.entitlements */,
-				487C325226F321FB00FC7459 /* TritiumApp.swift */,
-				487C325426F321FB00FC7459 /* ConfigView.swift */,
-				48FDE47926F45F0B00A8238B /* CGImageTools.swift */,
+				48FDE48426F47B5200A8238B /* AssetLoader */,
+				48FDE48326F47B4400A8238B /* Scenes */,
+				48FDE48226F47B3600A8238B /* App */,
+				48FDE47D26F47ADB00A8238B /* View+Extension */,
 				487C325626F321FF00FC7459 /* Assets.xcassets */,
 				487C325826F321FF00FC7459 /* Preview Content */,
 			);
@@ -130,15 +116,6 @@
 			path = TritiumTests;
 			sourceTree = "<group>";
 		};
-		487C326C26F3220000FC7459 /* TritiumUITests */ = {
-			isa = PBXGroup;
-			children = (
-				487C326D26F3220000FC7459 /* TritiumUITests.swift */,
-				487C326F26F3220000FC7459 /* TritiumUITestsLaunchTests.swift */,
-			);
-			path = TritiumUITests;
-			sourceTree = "<group>";
-		};
 		487C327D26F3229000FC7459 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +129,41 @@
 				487C328326F323C800FC7459 /* Makt */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		48FDE47D26F47ADB00A8238B /* View+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				48FDE47E26F47AE800A8238B /* View+Extension.swift */,
+			);
+			path = "View+Extension";
+			sourceTree = "<group>";
+		};
+		48FDE48226F47B3600A8238B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				487C325226F321FB00FC7459 /* TritiumApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		48FDE48326F47B4400A8238B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				48FDE48026F47B2100A8238B /* GameFilesView.swift */,
+				48FDE47B26F47A9300A8238B /* ContentView.swift */,
+				487C325426F321FB00FC7459 /* ConfigView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		48FDE48426F47B5200A8238B /* AssetLoader */ = {
+			isa = PBXGroup;
+			children = (
+				48FDE47926F45F0B00A8238B /* CGImageTools.swift */,
+				48FDE48526F47B6100A8238B /* AssetLoader.swift */,
+			);
+			path = AssetLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,24 +208,6 @@
 			productReference = 487C325F26F3220000FC7459 /* TritiumTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		487C326826F3220000FC7459 /* TritiumUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 487C327926F3220000FC7459 /* Build configuration list for PBXNativeTarget "TritiumUITests" */;
-			buildPhases = (
-				487C326526F3220000FC7459 /* Sources */,
-				487C326626F3220000FC7459 /* Frameworks */,
-				487C326726F3220000FC7459 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				487C326B26F3220000FC7459 /* PBXTargetDependency */,
-			);
-			name = TritiumUITests;
-			productName = TritiumUITests;
-			productReference = 487C326926F3220000FC7459 /* TritiumUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,10 +222,6 @@
 						CreatedOnToolsVersion = 13.0;
 					};
 					487C325E26F3220000FC7459 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 487C324E26F321FB00FC7459;
-					};
-					487C326826F3220000FC7459 = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 487C324E26F321FB00FC7459;
 					};
@@ -252,7 +242,6 @@
 			targets = (
 				487C324E26F321FB00FC7459 /* Tritium */,
 				487C325E26F3220000FC7459 /* TritiumTests */,
-				487C326826F3220000FC7459 /* TritiumUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -274,13 +263,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		487C326726F3220000FC7459 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -288,8 +270,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */,
 				487C325526F321FB00FC7459 /* ConfigView.swift in Sources */,
 				48FDE47A26F45F0B00A8238B /* CGImageTools.swift in Sources */,
+				48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */,
+				48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */,
+				48FDE48626F47B6100A8238B /* AssetLoader.swift in Sources */,
 				487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,15 +288,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		487C326526F3220000FC7459 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				487C326E26F3220000FC7459 /* TritiumUITests.swift in Sources */,
-				487C327026F3220000FC7459 /* TritiumUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -318,11 +295,6 @@
 			isa = PBXTargetDependency;
 			target = 487C324E26F321FB00FC7459 /* Tritium */;
 			targetProxy = 487C326026F3220000FC7459 /* PBXContainerItemProxy */;
-		};
-		487C326B26F3220000FC7459 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 487C324E26F321FB00FC7459 /* Tritium */;
-			targetProxy = 487C326A26F3220000FC7459 /* PBXContainerItemProxy */;
 		};
 		48FDE47626F32C9D00A8238B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -554,50 +526,6 @@
 			};
 			name = Release;
 		};
-		487C327A26F3220000FC7459 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.TritiumUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Tritium;
-			};
-			name = Debug;
-		};
-		487C327B26F3220000FC7459 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyon.TritiumUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Tritium;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -624,15 +552,6 @@
 			buildConfigurations = (
 				487C327726F3220000FC7459 /* Debug */,
 				487C327826F3220000FC7459 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		487C327926F3220000FC7459 /* Build configuration list for PBXNativeTarget "TritiumUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				487C327A26F3220000FC7459 /* Debug */,
-				487C327B26F3220000FC7459 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
