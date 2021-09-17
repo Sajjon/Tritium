@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 @main
 struct TritiumApp: App {
     var body: some Scene {

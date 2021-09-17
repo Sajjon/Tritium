@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ConfigView.swift
 //  Tritium
 //
 //  Created by Alexander Cyon on 2021-09-16.
@@ -122,45 +122,126 @@ struct LoadAssetError: Swift.Error, Hashable, CustomStringConvertible {
     var description: String { reason }
 }
 
-struct ContentView: View {
-    
- 
-    
-    @State var assetState: AssetState = .initialized
+struct GameFilesView: View {
+    let config: Config
     
     var body: some View {
-        Group {
-            switch assetState {
-            case .initialized:
-                Button("Load asset now") {
-                    defer { assetState = .loading }
-                    ImageLoader.load { result in
-                        switch result {
-                        case .success(let namedImage):
-                            assetState = .loaded(namedImage.image, name: namedImage.name)
-                        case .failure(let error):
-                            assetState = .failed(error)
-                        }
-                    }
-                }
-            case .loaded(let imageLoaded, let imageName):
-                VStack {
-                    imageLoaded
-                    Text("\(imageName)")
-                }
-            case .loading:
-                Text("Loading")
-            case .failed(let error):
-                Text("Erorr: \(String(describing: error))")
-            }
-        }
-        .font(.largeTitle)
-        .frame(width: 512, height: 512)
+        Text("Resource data: \(config.gamesFilesDirectories.data)")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct NavigationLazyView<Content: View>: View {
+    let build: () -> Content
+    init(_ build: @autoclosure @escaping () -> Content) {
+        self.build = build
+    }
+    var body: Content {
+        build()
+    }
+}
+
+
+struct ContentView: View {
+    @State var config: Config?
+    
+    var body: some View {
+        if config == nil {
+            ConfigView(config: $config)
+        } else {
+            Text("We've got the config: \(String(describing: config!.gamesFilesDirectories))")
+        }
+    }
+}
+
+
+struct ConfigView: View {
+    
+    
+//    final class ViewModel: ObservableObject {
+////        private var whenSetClosure: ((Bool) -> Void)?
+//        @Published var config: Config?
+////           { didSet {
+////                if let setClosure = self.whenSetClosure {
+////                    setClosure(self.config != nil)
+////                }
+////            }
+////        }
+////
+////        init(_ config: Config? = nil, whenSetClosure: ((Bool) -> Void)? = nil) {
+////            self.config = config
+////            self.whenSetClosure = whenSetClosure
+////        }
+//    }
+    
+    @State var resourcePath: String = Config.Directories.defaultGamesFilesDirectoryPath
+    
+    @State var pathError: Swift.Error?
+    @Binding var config: Config?
+//    @ObservedObject var viewModel = ViewModel()
+
+    var body: some View {
+        VStack(spacing: 50) {
+            Text("Path to original game resources (DATA, MAPS, MP3)")
+            
+            TextField("Resource path", text: $resourcePath)
+            
+//            validationErrorView
+            
+            Button("Next") {
+                let directories: Config.Directories = .init(resourcePath: resourcePath)
+                do {
+                    let newConfig = try Config(gamesFilesDirectories: directories, fileManager: .default)
+                    self.config = newConfig
+//                    print("successfully created config!:\(config)")
+                } catch {
+                    pathError = error
+                }
+            }
+           
+//            NavigationLink(
+//                destination: NavigationLazyView(GameFilesView(config: pathValidationStatus.config!)),
+//                isActive: isGameFilesActive
+//            ) { EmptyView() }
+            
+            if let error = pathError {
+                Text("Error: \(String(describing: error))").eraseToAnyView()
+            } else {
+                NavigationLink(
+                    destination: destination(),
+                               isActive: .constant(config != nil)
+                           ) { EmptyView() }
+            }
+            
+        }
+        .font(.largeTitle)
+        .frame(width: 1024, height: 512)
+    }
+    
+//    var validationErrorView: some View {
+//        if let error = pathError {
+//            return Text("Error: \(String(describing: error))").eraseToAnyView()
+//        } else {
+//            return EmptyView().eraseToAnyView()
+//        }
+//    }
+    
+    func destination() -> AnyView {
+        if let config = config {
+            return GameFilesView(config: config).eraseToAnyView()
+        } else {
+            return EmptyView().eraseToAnyView()
+        }
+    }
+}
+
+struct ConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ConfigView(config: .constant(nil))
+    }
+}
+
+extension View {
+    func eraseToAnyView() -> AnyView {
+        AnyView(self)
     }
 }

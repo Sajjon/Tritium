@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325226F321FB00FC7459 /* TritiumApp.swift */; };
-		487C325526F321FB00FC7459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325426F321FB00FC7459 /* ContentView.swift */; };
+		487C325526F321FB00FC7459 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325426F321FB00FC7459 /* ConfigView.swift */; };
 		487C325726F321FF00FC7459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325626F321FF00FC7459 /* Assets.xcassets */; };
 		487C325A26F321FF00FC7459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325926F321FF00FC7459 /* Preview Assets.xcassets */; };
 		487C326426F3220000FC7459 /* TritiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326326F3220000FC7459 /* TritiumTests.swift */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		487C324F26F321FB00FC7459 /* Tritium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tritium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487C325226F321FB00FC7459 /* TritiumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumApp.swift; sourceTree = "<group>"; };
-		487C325426F321FB00FC7459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		487C325426F321FB00FC7459 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		487C325626F321FF00FC7459 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		487C325926F321FF00FC7459 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		487C325F26F3220000FC7459 /* TritiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,7 +106,7 @@
 			children = (
 				48FDE47726F3488800A8238B /* Tritium.entitlements */,
 				487C325226F321FB00FC7459 /* TritiumApp.swift */,
-				487C325426F321FB00FC7459 /* ContentView.swift */,
+				487C325426F321FB00FC7459 /* ConfigView.swift */,
 				48FDE47926F45F0B00A8238B /* CGImageTools.swift */,
 				487C325626F321FF00FC7459 /* Assets.xcassets */,
 				487C325826F321FF00FC7459 /* Preview Content */,
@@ -288,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				487C325526F321FB00FC7459 /* ContentView.swift in Sources */,
+				487C325526F321FB00FC7459 /* ConfigView.swift in Sources */,
 				48FDE47A26F45F0B00A8238B /* CGImageTools.swift in Sources */,
 				487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */,
 			);
