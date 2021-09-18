@@ -67,6 +67,8 @@ struct LodFileView: View {
                         Text("Loading file entry..")
                     case .loaded(let cgImage):
                         SwiftUI.Image.init(decorative: cgImage, scale: 1.0)
+                    case .loadedText(let text):
+                        Text("\(text)")
                     }
                 }
             }
@@ -93,6 +95,12 @@ extension LodFileView.FileEntryView {
     }
 }
 
+private extension LodFileView.FileEntryView.ViewModel {
+    func loadPCX(_ pcxImage: PCXImage) -> AnyPublisher<CGImage, ImageLoader.Error> {
+        imageLoader.loadImageFrom(pcx: pcxImage)
+    }
+}
+
 extension LodFileView.FileEntryView.ViewModel {
     
     var fileEntryName: String {
@@ -109,27 +117,39 @@ extension LodFileView.FileEntryView.ViewModel {
         case idle
         case loading
         case loaded(CGImage)
+        case loadedText(String)
         case error(LodFileView.FileEntryView.ViewModel.Error)
     }
     
     func loadEntry() {
         state = .loading
         
+
         switch fileEntry.content {
-        case .dataEntry(let dataEntry):
-            state = .error(.unsupportedAsset(kind: "DataEntry"))
-        case .pcxImage(let pcx):
-            imageLoader.loadImageFrom(pcx: pcx)
-                .receive(on: RunLoop.main)
-                .sink { [self] completion in
-                    switch completion {
-                    case .failure(let error):
-                        state = .error(.failedToLoadImage(error))
-                    case .finished: break
-                    }
-                } receiveValue: { [self] image in
-                    state = .loaded(image)
+        case .text(let textPublisher):
+            textPublisher
+                .sink { [self] text in
+                    state = .loadedText(text)
                 }.store(in: &cancellables)
+        case .def(let defPublisher):
+            fatalError("handle")
+        case .pcx(let pcxPublisher):
+            pcxPublisher.flatMap(loadPCX).receive(on: RunLoop.main)
+                            .sink { [self] completion in
+                                switch completion {
+                                case .failure(let error):
+                                    state = .error(.failedToLoadImage(error))
+                                case .finished: break
+                                }
+                            } receiveValue: { [self] image in
+                                state = .loaded(image)
+                            }.store(in: &cancellables)
+        case .font(let fontPubliser):
+            fatalError("handle")
+        case .campaign(let campaignPublisher):
+            fatalError("handle")
+        case .palette(let palettePublisher):
+            fatalError("handle")
         }
     }
 }
