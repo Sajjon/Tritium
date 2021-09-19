@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Guld
+import Util
 import Combine
 
 struct AssetView: View {
@@ -65,13 +66,24 @@ struct LodFileView: View {
                         }
                     case .loading:
                         Text("Loading file entry..")
-                    case .loaded(let cgImage):
-                        SwiftUI.Image.init(decorative: cgImage, scale: 1.0)
-                    case .loadedText(let text):
-                        Text("\(text)")
+                    case .loaded(let resource):
+                        loadedResourceView(resource: resource)
                     }
                 }
             }
+        }
+        
+        func loadedResourceView(resource: ViewModel.LoadingState.Resource) -> AnyView {
+            Group {
+            switch resource {
+            case .text(let text):
+                Text("\(text)")
+            case .image(let cgImage):
+                Image(decorative: cgImage, scale: 1.0)
+            case .definitionFile(let definitionFile):
+                DefinitionFileView(definitionFile: definitionFile)
+            }
+            }.eraseToAnyView()
         }
     }
 }
@@ -96,8 +108,12 @@ extension LodFileView.FileEntryView {
 }
 
 private extension LodFileView.FileEntryView.ViewModel {
-    func loadPCX(_ pcxImage: PCXImage) -> AnyPublisher<CGImage, ImageLoader.Error> {
-        imageLoader.loadImageFrom(pcx: pcxImage)
+    func loadPCX(_ pcxImage: PCXImage) -> AnyPublisher<CGImage, Never> {
+        imageLoader.loadImageFrom(pcx: pcxImage).catch({ _ in
+            return Deferred<AnyPublisher<CGImage, Never>> {
+                fatalError()
+            }.eraseToAnyPublisher()
+        }).eraseToAnyPublisher()
     }
 }
 
@@ -113,11 +129,15 @@ extension LodFileView.FileEntryView.ViewModel {
     }
     
     enum LoadingState {
+        enum Resource {
+            case text(String)
+            case image(CGImage)
+            case definitionFile(DefinitionFile)
+        }
  
         case idle
         case loading
-        case loaded(CGImage)
-        case loadedText(String)
+        case loaded(resource: Resource)
         case error(LodFileView.FileEntryView.ViewModel.Error)
     }
     
@@ -128,28 +148,34 @@ extension LodFileView.FileEntryView.ViewModel {
         switch fileEntry.content {
         case .text(let textPublisher):
             textPublisher
+                .receive(on: RunLoop.main)
                 .sink { [self] text in
-                    state = .loadedText(text)
+                    state = .loaded(resource: .text(text))
                 }.store(in: &cancellables)
         case .def(let defPublisher):
-            fatalError("handle")
+            defPublisher
+                .receive(on: RunLoop.main)
+                .sink { [self] definitionFile in
+                    state = .loaded(resource: .definitionFile(definitionFile))
+                }.store(in: &cancellables)
         case .pcx(let pcxPublisher):
-            pcxPublisher.flatMap(loadPCX).receive(on: RunLoop.main)
-                            .sink { [self] completion in
-                                switch completion {
-                                case .failure(let error):
-                                    state = .error(.failedToLoadImage(error))
-                                case .finished: break
-                                }
-                            } receiveValue: { [self] image in
-                                state = .loaded(image)
-                            }.store(in: &cancellables)
+            pcxPublisher.flatMap(loadPCX)
+                .receive(on: RunLoop.main)
+                .sink { [self] image in
+                    state = .loaded(resource: .image(image))
+                }.store(in: &cancellables)
         case .font(let fontPubliser):
             fatalError("handle")
         case .campaign(let campaignPublisher):
             fatalError("handle")
         case .palette(let palettePublisher):
             fatalError("handle")
+        case .mask(let maskPublisher):
+            maskPublisher
+                .receive(on: RunLoop.main)
+                .sink { [self] mask in
+                    state = .loaded(resource: .text("Mask:\n\n\(String(describing: mask))\n"))
+                }.store(in: &cancellables)
         }
     }
 }
