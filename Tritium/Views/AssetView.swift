@@ -146,6 +146,8 @@ extension LodFileView.FileEntryView.ViewModel {
         
 
         switch fileEntry.content {
+        case .xmi(let xmiPublisher):
+            fatalError("handle")
         case .text(let textPublisher):
             textPublisher
                 .receive(on: RunLoop.main)
