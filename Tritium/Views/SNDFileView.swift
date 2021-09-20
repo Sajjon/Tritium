@@ -28,6 +28,8 @@ struct SoundFileView: View {
     
     func loadSoundFileResult() -> Result<AVAudioPlayer, Swift.Error> {
         do {
+            // IMPORTANT: For more advanced playback capabilities, use: AVAudioEngine
+            // https://developer.apple.com/documentation/avfaudio/avaudioengine
             let audioPlayer = try AVAudioPlayer(
                 data: soundFile.contents,
                 fileTypeHint: soundFile.fileExtension
@@ -43,9 +45,9 @@ struct SoundFileView: View {
             Text("Name: \(soundFile.fileName) - #\(soundFile.contents.sizeString)")
             switch loadSoundFileResult() {
             case .success(let audioPlayer):
-                Button("Play sound") {
-                    audioPlayer.play()
-                }
+                    Button("Play sound") {
+                        audioPlayer.play()
+                    }
             case .failure(let error):
                 Text("Failed to load audio, error: \(String(describing: error))")
             }
