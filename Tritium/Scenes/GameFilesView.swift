@@ -139,24 +139,17 @@ extension GameFilesView.ViewModel {
     func open(assetFile: AssetFile) {
         defer { state = .loading(.assetFile(assetFile)) }
         
-        switch assetFile.kind {
-        case .archive:
-            archiveLoader.loadArchive(assetFile: assetFile)
-                .receive(on: RunLoop.main)
-                .sink { [self] completion in
-                    switch completion {
-                    case .failure(let error):
-                        state = .error(.failedToOpenArchive(error))
-                    case .finished: break
-                    }
-                } receiveValue: { [self] loadedAsset in
-                    state = .opened(loadedAsset)
-                }.store(in: &cancellables)
-        case .sound:
-            state = .error(.unsupportedAsset(kind: "sound"))
-        case .video:
-            state = .error(.unsupportedAsset(kind: "video"))
-        }
+        archiveLoader.loadArchive(assetFile: assetFile)
+            .receive(on: RunLoop.main)
+            .sink { [self] completion in
+                switch completion {
+                case .failure(let error):
+                    state = .error(.failedToOpenArchive(error))
+                case .finished: break
+                }
+            } receiveValue: { [self] loadedAsset in
+                state = .opened(loadedAsset)
+            }.store(in: &cancellables)
         
     }
 }
