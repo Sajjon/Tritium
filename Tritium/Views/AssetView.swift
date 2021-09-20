@@ -24,21 +24,6 @@ struct AssetView: View {
     }
 }
 
-struct SNDFileView: View {
-    let sndFile: SNDFile
-    var body: some View {
-        VStack {
-            Text("SND File: \(sndFile.sndArchiveFileName)")
-            List(sndFile.fileEntries, id: \.self) { fileEntry in
-                VStack {
-                    Text("Name: \(fileEntry.fileName) - #\(fileEntry.contents.sizeString)")
-                }
-            }
-        }
-    }
-    
-    
-}
 
 struct LodFileView: View {
     let lodFile: LodFile
