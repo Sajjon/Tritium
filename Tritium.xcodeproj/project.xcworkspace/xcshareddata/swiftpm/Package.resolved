@@ -9,6 +9,15 @@
           "revision": "ba0b6cb51cc6202f896e469b87d2889a46b10d1b",
           "version": "5.1.1"
         }
+      },
+      {
+        "package": "SwiftFFmpeg",
+        "repositoryURL": "https://github.com/sunlubo/SwiftFFmpeg",
+        "state": {
+          "branch": null,
+          "revision": "28148a61189c2e3d3f55f5e7f7eb952f55f8890f",
+          "version": "1.5.0"
+        }
       }
     ]
   },

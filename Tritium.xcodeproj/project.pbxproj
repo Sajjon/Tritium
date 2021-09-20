@@ -20,6 +20,7 @@
 		48FDE48C26F4C82600A8238B /* AssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48B26F4C82600A8238B /* AssetView.swift */; };
 		48FDE48E26F7314300A8238B /* DefinitionFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48D26F7314300A8238B /* DefinitionFileView.swift */; };
 		48FDE49026F84AE600A8238B /* SNDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48F26F84AE600A8238B /* SNDFileView.swift */; };
+		48FDE49226F85A9E00A8238B /* VIDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE49126F85A9E00A8238B /* VIDFileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		48FDE48B26F4C82600A8238B /* AssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetView.swift; sourceTree = "<group>"; };
 		48FDE48D26F7314300A8238B /* DefinitionFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionFileView.swift; sourceTree = "<group>"; };
 		48FDE48F26F84AE600A8238B /* SNDFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNDFileView.swift; sourceTree = "<group>"; };
+		48FDE49126F85A9E00A8238B /* VIDFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIDFileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				48FDE48B26F4C82600A8238B /* AssetView.swift */,
 				48FDE48F26F84AE600A8238B /* SNDFileView.swift */,
+				48FDE49126F85A9E00A8238B /* VIDFileView.swift */,
 				48FDE48D26F7314300A8238B /* DefinitionFileView.swift */,
 			);
 			path = Views;
@@ -288,6 +291,7 @@
 				487C325526F321FB00FC7459 /* ConfigView.swift in Sources */,
 				48FDE48C26F4C82600A8238B /* AssetView.swift in Sources */,
 				48FDE49026F84AE600A8238B /* SNDFileView.swift in Sources */,
+				48FDE49226F85A9E00A8238B /* VIDFileView.swift in Sources */,
 				48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */,
 				48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */,
 				48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */,

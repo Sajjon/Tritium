@@ -20,6 +20,8 @@ struct AssetView: View {
             LodFileView(lodFile: lodFile, imageLoader: imageLoader)
         case .sound(let sndFile):
             SNDFileView(sndFile: sndFile)
+        case .video(let vidFile):
+            VIDFileView(vidFile: vidFile)
         }
     }
 }
