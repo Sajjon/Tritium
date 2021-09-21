@@ -24,7 +24,7 @@ struct VIDFileView: View {
     }
 }
 
-
+import AVKit
 struct VideoFileView: View {
     
     
@@ -40,14 +40,42 @@ struct VideoFileView: View {
         }
         
         @Published var extactVideoError: Swift.Error? = nil
-        @Published var extractedVideoURL: URL? = nil
+        @Published var avPlayer: AVPlayer? = nil
         private var cancellables = Set<AnyCancellable>()
         
         func extractVideo() {
+            
+            //  Find Application Support directory
+            let fileManager = FileManager.default
+            let appSupportURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            
+            let containingDirectoryURL = appSupportURL.appendingPathComponent("Makt")
+            
+            try! fileManager.createDirectory(
+                at: containingDirectoryURL,
+                withIntermediateDirectories: true,
+                attributes: nil)
+            
+            let temporaryDirectory = containingDirectoryURL.appendingPathComponent("Temp")
+            
+            try! fileManager.createDirectory(
+                at: temporaryDirectory,
+                withIntermediateDirectories: true,
+                attributes: nil)
+            
+            let outputDirectory = containingDirectoryURL.appendingPathComponent("Converted")
+            
+            try! fileManager.createDirectory(
+                at: outputDirectory,
+                withIntermediateDirectories: true,
+                attributes: nil)
+            
+            
             videoExtractor.extract(
                 data: videoFileEntry.contents,
-                name: videoFileEntry.fileName //,
-//                outputURL: "cyon_homm3.mov"
+                name: videoFileEntry.fileName,
+                temporaryDirectory: temporaryDirectory,
+                outputDirectory: outputDirectory
             )
                 .receive(on: RunLoop.main).sink(
                     receiveCompletion: { [self] completion in
@@ -59,7 +87,7 @@ struct VideoFileView: View {
                         }
                         
                     }, receiveValue: {
-                        self.extractedVideoURL = $0
+                        self.avPlayer = AVPlayer(url: $0)
                     }
                 ).store(in: &cancellables)
         }
@@ -71,16 +99,9 @@ struct VideoFileView: View {
             
             Text("Name: \(viewModel.videoFileEntry.fileName) - #\(viewModel.videoFileEntry.contents.sizeString)")
             
-            if let videoURL = viewModel.extractedVideoURL {
-                Button("Play Video") {
-                    // IMPORTANT: For more advanced playback capabilities, use: AVAudioEngine
-                    // https://developer.apple.com/documentation/avfaudio/avaudioengine
-                    let videoPlayer = try! AVAudioPlayer(
-                        contentsOf: videoURL,
-                        fileTypeHint: "mov"
-                    )
-                    videoPlayer.play()
-                }
+            if let player = viewModel.avPlayer {
+                VideoPlayer(player: player)
+                    .frame(width: 200, height: 116)
             } else {
                 if let error = viewModel.extactVideoError {
                     Text("Failed to extract video, error: \(String(describing: error))")
