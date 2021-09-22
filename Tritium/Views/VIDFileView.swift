@@ -31,11 +31,11 @@ struct VIDFileView: View {
     }
 }
 
-enum LoadingState<Model, Failure: Swift.Error> {
+enum LoadingState<Model> {
     case idle
     case loading
     case loaded(Model)
-    case failure(Failure)
+    case failure(Swift.Error)
 }
 
 import AVKit
@@ -66,7 +66,7 @@ struct VideoFileView: View {
         
 //        @Published var extactVideoError: Swift.Error? = nil
 //        @Published var avPlayer: AVPlayer? = nil
-        typealias State = LoadingState<AVPlayer, Swift.Error>
+        typealias State = LoadingState<AVPlayer>
         @Published var state: State = .idle
         
         private var cancellables = Set<AnyCancellable>()
