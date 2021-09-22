@@ -12,12 +12,14 @@
 		487C325726F321FF00FC7459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325626F321FF00FC7459 /* Assets.xcassets */; };
 		487C325A26F321FF00FC7459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325926F321FF00FC7459 /* Preview Assets.xcassets */; };
 		487C326426F3220000FC7459 /* TritiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326326F3220000FC7459 /* TritiumTests.swift */; };
+		489AEAD626FAF652003AE746 /* LODArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489AEAD526FAF652003AE746 /* LODArchiveView.swift */; };
+		489AEAD826FAF7F4003AE746 /* MapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489AEAD726FAF7F4003AE746 /* MapListView.swift */; };
 		48FDE47426F32C9300A8238B /* Makt in Frameworks */ = {isa = PBXBuildFile; productRef = 48FDE47326F32C9300A8238B /* Makt */; };
 		48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47B26F47A9300A8238B /* ContentView.swift */; };
 		48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47E26F47AE800A8238B /* View+Extension.swift */; };
 		48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48026F47B2100A8238B /* GameFilesView.swift */; };
 		48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48826F4C78500A8238B /* Data+Extensions.swift */; };
-		48FDE48C26F4C82600A8238B /* AssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48B26F4C82600A8238B /* AssetView.swift */; };
+		48FDE48C26F4C82600A8238B /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48B26F4C82600A8238B /* ArchiveView.swift */; };
 		48FDE48E26F7314300A8238B /* DefinitionFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48D26F7314300A8238B /* DefinitionFileView.swift */; };
 		48FDE49026F84AE600A8238B /* SNDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48F26F84AE600A8238B /* SNDFileView.swift */; };
 		48FDE49226F85A9E00A8238B /* VIDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE49126F85A9E00A8238B /* VIDFileView.swift */; };
@@ -42,12 +44,14 @@
 		487C325F26F3220000FC7459 /* TritiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		487C326326F3220000FC7459 /* TritiumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumTests.swift; sourceTree = "<group>"; };
 		487C328326F323C800FC7459 /* Makt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Makt; path = ../Makt; sourceTree = "<group>"; };
+		489AEAD526FAF652003AE746 /* LODArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LODArchiveView.swift; sourceTree = "<group>"; };
+		489AEAD726FAF7F4003AE746 /* MapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListView.swift; sourceTree = "<group>"; };
 		48FDE47826F3652100A8238B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		48FDE47B26F47A9300A8238B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		48FDE47E26F47AE800A8238B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		48FDE48026F47B2100A8238B /* GameFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilesView.swift; sourceTree = "<group>"; };
 		48FDE48826F4C78500A8238B /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
-		48FDE48B26F4C82600A8238B /* AssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetView.swift; sourceTree = "<group>"; };
+		48FDE48B26F4C82600A8238B /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		48FDE48D26F7314300A8238B /* DefinitionFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionFileView.swift; sourceTree = "<group>"; };
 		48FDE48F26F84AE600A8238B /* SNDFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNDFileView.swift; sourceTree = "<group>"; };
 		48FDE49126F85A9E00A8238B /* VIDFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIDFileView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				48FDE48026F47B2100A8238B /* GameFilesView.swift */,
 				48FDE47B26F47A9300A8238B /* ContentView.swift */,
 				487C325426F321FB00FC7459 /* ConfigView.swift */,
+				489AEAD726FAF7F4003AE746 /* MapListView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -175,10 +180,11 @@
 		48FDE48A26F4C81E00A8238B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				48FDE48B26F4C82600A8238B /* AssetView.swift */,
+				48FDE48B26F4C82600A8238B /* ArchiveView.swift */,
 				48FDE48F26F84AE600A8238B /* SNDFileView.swift */,
 				48FDE49126F85A9E00A8238B /* VIDFileView.swift */,
 				48FDE48D26F7314300A8238B /* DefinitionFileView.swift */,
+				489AEAD526FAF652003AE746 /* LODArchiveView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -287,10 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				489AEAD626FAF652003AE746 /* LODArchiveView.swift in Sources */,
 				48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */,
 				487C325526F321FB00FC7459 /* ConfigView.swift in Sources */,
-				48FDE48C26F4C82600A8238B /* AssetView.swift in Sources */,
+				48FDE48C26F4C82600A8238B /* ArchiveView.swift in Sources */,
 				48FDE49026F84AE600A8238B /* SNDFileView.swift in Sources */,
+				489AEAD826FAF7F4003AE746 /* MapListView.swift in Sources */,
 				48FDE49226F85A9E00A8238B /* VIDFileView.swift in Sources */,
 				48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */,
 				48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */,

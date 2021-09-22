@@ -39,18 +39,18 @@ extension GameFilesView {
                 Text("Loading \(String(describing: request))...")
             case .idle:
                 Button("Load assets") {
-                    viewModel.loadAssets()
+                    viewModel.loadArchives()
                 }
-            case .loaded(let assets):
+            case .loaded(let archives):
                 VStack(spacing: 40) {
-                    ForEach(assets) { assetFile in
-                        Button("\(assetFile.fileName) (#\(assetFile.data.sizeString))") {
-                            viewModel.open(assetFile: assetFile)
+                    ForEach(archives) { archiveFile in
+                        Button("\(archiveFile.fileName) (#\(archiveFile.data.sizeString))") {
+                            viewModel.open(archiveFile: archiveFile)
                         }.padding()
                     }
                 }
-            case .opened(let loadedAsset):
-                AssetView(loadedAsset: loadedAsset, imageLoader: viewModel.imageLoader)
+            case .opened(let loadedArchive):
+                ArchiveView(loadedArchive: loadedArchive, imageLoader: viewModel.imageLoader)
             }
         }
        
@@ -85,15 +85,15 @@ extension GameFilesView {
     enum LoadingState {
         
         enum UserRequest: Equatable {
-            case assetList
-            case assetFile(AssetFile)
+            case archives
+            case archiveFile(ArchiveFile)
         }
         
         case idle
         case loading(UserRequest)
-        case loaded([AssetFile])
+        case loaded([ArchiveFile])
         case error(GameFilesView.ViewModel.Error)
-        case opened(LoadedAsset)
+        case opened(LoadedArchive)
     }
     
 }
@@ -117,10 +117,10 @@ extension GameFilesView.ViewModel {
 
 // MARK: Load
 extension GameFilesView.ViewModel {
-    func loadAssets() {
-        state = .loading(.assetList)
+    func loadArchives() {
+        state = .loading(.archives)
         
-        assetLoader.loadAll()
+        assetLoader.loadArchives()
             .receive(on: RunLoop.main)
             .sink { [self] completion in
                 switch completion {
@@ -136,10 +136,10 @@ extension GameFilesView.ViewModel {
 
 // MARK: Open
 extension GameFilesView.ViewModel {
-    func open(assetFile: AssetFile) {
-        defer { state = .loading(.assetFile(assetFile)) }
+    func open(archiveFile: ArchiveFile) {
+        defer { state = .loading(.archiveFile(archiveFile)) }
         
-        archiveLoader.loadArchive(assetFile: assetFile)
+        archiveLoader.load(archiveFile: archiveFile)
             .receive(on: RunLoop.main)
             .sink { [self] completion in
                 switch completion {
@@ -154,7 +154,7 @@ extension GameFilesView.ViewModel {
     }
 }
 
-// MARK: AssetFile + ID
-extension AssetFile: Identifiable {
+// MARK: ArchiveFile + ID
+extension ArchiveFile: Identifiable {
     public var id: String { fileName }
 }

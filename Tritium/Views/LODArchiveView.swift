@@ -1,31 +1,13 @@
 //
-//  AssetView.swift
-//  AssetView
+//  LODArchiveView.swift
+//  LODArchiveView
 //
-//  Created by Alexander Cyon on 2021-09-17.
+//  Created by Alexander Cyon on 2021-09-22.
 //
 
-import Foundation
 import SwiftUI
-import Guld
-import Util
 import Combine
-
-struct AssetView: View {
-    let loadedAsset: LoadedAsset
-    let imageLoader: ImageLoader
-    var body: some View {
-        switch loadedAsset {
-        case .archive(let lodFile):
-            LodFileView(lodFile: lodFile, imageLoader: imageLoader)
-        case .sound(let sndFile):
-            SNDFileView(sndFile: sndFile)
-        case .video(let vidFile):
-            VIDFileView(vidFile: vidFile)
-        }
-    }
-}
-
+import Makt
 
 struct LodFileView: View {
     let lodFile: LodFile

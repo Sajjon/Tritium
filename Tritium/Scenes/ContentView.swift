@@ -13,13 +13,16 @@ struct ContentView: View {
     @State var config: Config?
     
     var body: some View {
-        Group {
+        NavigationView {
             if let config = config {
-                GameFilesView(config: config)
+                VStack {
+                    NavigationLink("Assets", destination: GameFilesView(config: config))
+                    NavigationLink("Maps", destination: MapListView(config: config))
+                }
             } else {
                 ConfigView(config: $config)
             }
-        }
+        }.navigationViewStyle(.automatic)
         .font(.largeTitle)
         .frame(width: 2048, height: 1024)
     }
