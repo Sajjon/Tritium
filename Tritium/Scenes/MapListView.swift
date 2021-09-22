@@ -16,6 +16,8 @@ extension Map.ID: Identifiable {
 
 struct ErrorView: View {
     let error: Swift.Error
+}
+extension ErrorView {
     var body: some View {
         Text("Error: \(String(describing: error))")
     }
@@ -38,7 +40,7 @@ struct MapListView: View {
                 Text("Loading map ids...")
             case .loaded(let mapIDs):
                 List(mapIDs) { mapID in
-                    NavigationLink("\(mapID.name)", destination: MapView(mapID: mapID))
+                    NavigationLink("\(mapID.name)", destination: MapView(mapID: mapID, assetLoader: model.assetLoader))
                 }
             }
         }
@@ -51,7 +53,7 @@ extension MapListView {
         
         private var cancellables = Set<AnyCancellable>()
         
-        private let assetLoader: AssetLoader
+        let assetLoader: AssetLoader
         
         init(assetLoader: AssetLoader) {
             self.assetLoader = assetLoader
@@ -74,8 +76,9 @@ extension MapListView {
 
 extension MapListView.Model {
     func load() {
+
         state = .loading
-        
+  
         assetLoader.loadMapIDs()
             .receive(on: RunLoop.main)
             .sink(
@@ -86,7 +89,6 @@ extension MapListView.Model {
                     case .finished:
                         break
                     }
-                    
                 }, receiveValue: { [self] mapIDs in
                     state = .loaded(mapIDs)
                 }

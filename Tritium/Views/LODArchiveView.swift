@@ -53,22 +53,24 @@ struct LodFileView: View {
                         }
                     case .loading:
                         Text("Loading file entry..")
-                    case .loaded(let resource):
-                        loadedResourceView(resource: resource)
+                    case .loaded(let asset):
+                        loadedAssetView(asset: asset)
                     }
                 }
             }
         }
         
-        func loadedResourceView(resource: ViewModel.LoadingState.Resource) -> AnyView {
+        func loadedAssetView(asset: ViewModel.LoadingState.Asset) -> AnyView {
             Group {
-            switch resource {
+            switch asset {
             case .text(let text):
                 Text("\(text)")
             case .image(let cgImage):
                 Image(decorative: cgImage, scale: 1.0)
             case .definitionFile(let definitionFile):
                 DefinitionFileView(definitionFile: definitionFile)
+            case .campaign(let campaign):
+                Text("Campaign: \(campaign.header.name)")
             }
             }.eraseToAnyView()
         }
@@ -116,15 +118,16 @@ extension LodFileView.FileEntryView.ViewModel {
     }
     
     enum LoadingState {
-        enum Resource {
+        enum Asset {
             case text(String)
             case image(CGImage)
             case definitionFile(DefinitionFile)
+            case campaign(Campaign)
         }
  
         case idle
         case loading
-        case loaded(resource: Resource)
+        case loaded(asset: Asset)
         case error(LodFileView.FileEntryView.ViewModel.Error)
     }
     
@@ -133,37 +136,41 @@ extension LodFileView.FileEntryView.ViewModel {
         
 
         switch fileEntry.content {
-        case .xmi(let xmiPublisher):
+        case .xmi:
             fatalError("handle")
         case .text(let textPublisher):
             textPublisher
                 .receive(on: RunLoop.main)
                 .sink { [self] text in
-                    state = .loaded(resource: .text(text))
+                    state = .loaded(asset: .text(text))
                 }.store(in: &cancellables)
         case .def(let defPublisher):
             defPublisher
                 .receive(on: RunLoop.main)
                 .sink { [self] definitionFile in
-                    state = .loaded(resource: .definitionFile(definitionFile))
+                    state = .loaded(asset: .definitionFile(definitionFile))
                 }.store(in: &cancellables)
         case .pcx(let pcxPublisher):
             pcxPublisher.flatMap(loadPCX)
                 .receive(on: RunLoop.main)
                 .sink { [self] image in
-                    state = .loaded(resource: .image(image))
+                    state = .loaded(asset: .image(image))
                 }.store(in: &cancellables)
-        case .font(let fontPubliser):
+        case .font:
             fatalError("handle")
         case .campaign(let campaignPublisher):
-            fatalError("handle")
-        case .palette(let palettePublisher):
+            campaignPublisher
+                .receive(on: RunLoop.main)
+                .sink { [self] campaign in
+                    state = .loaded(asset: .campaign(campaign))
+                }.store(in: &cancellables)
+        case .palette:
             fatalError("handle")
         case .mask(let maskPublisher):
             maskPublisher
                 .receive(on: RunLoop.main)
                 .sink { [self] mask in
-                    state = .loaded(resource: .text("Mask:\n\n\(String(describing: mask))\n"))
+                    state = .loaded(asset: .text("Mask:\n\n\(String(describing: mask))\n"))
                 }.store(in: &cancellables)
         }
     }
