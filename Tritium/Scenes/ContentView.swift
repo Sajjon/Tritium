@@ -22,7 +22,7 @@ struct ContentView: View {
             } else {
                 ConfigView(config: $config)
             }
-        }.navigationViewStyle(.automatic)
+        }
         .font(.largeTitle)
         .frame(width: 2048, height: 1024)
     }
