@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4833594526FB663C004F0458 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594426FB663C004F0458 /* MapView.swift */; };
+		4833594526FB663C004F0458 /* LoadMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594426FB663C004F0458 /* LoadMapView.swift */; };
+		4833594726FC5A35004F0458 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594626FC5A35004F0458 /* MapView.swift */; };
 		487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325226F321FB00FC7459 /* TritiumApp.swift */; };
 		487C325526F321FB00FC7459 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325426F321FB00FC7459 /* ConfigView.swift */; };
 		487C325726F321FF00FC7459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325626F321FF00FC7459 /* Assets.xcassets */; };
@@ -37,7 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4833594426FB663C004F0458 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4833594426FB663C004F0458 /* LoadMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMapView.swift; sourceTree = "<group>"; };
+		4833594626FC5A35004F0458 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		487C324F26F321FB00FC7459 /* Tritium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tritium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487C325226F321FB00FC7459 /* TritiumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumApp.swift; sourceTree = "<group>"; };
 		487C325426F321FB00FC7459 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
@@ -167,7 +169,8 @@
 				48FDE47B26F47A9300A8238B /* ContentView.swift */,
 				487C325426F321FB00FC7459 /* ConfigView.swift */,
 				489AEAD726FAF7F4003AE746 /* MapListView.swift */,
-				4833594426FB663C004F0458 /* MapView.swift */,
+				4833594426FB663C004F0458 /* LoadMapView.swift */,
+				4833594626FC5A35004F0458 /* MapView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -300,9 +303,10 @@
 				48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */,
 				487C325526F321FB00FC7459 /* ConfigView.swift in Sources */,
 				48FDE48C26F4C82600A8238B /* ArchiveView.swift in Sources */,
-				4833594526FB663C004F0458 /* MapView.swift in Sources */,
+				4833594526FB663C004F0458 /* LoadMapView.swift in Sources */,
 				48FDE49026F84AE600A8238B /* SNDFileView.swift in Sources */,
 				489AEAD826FAF7F4003AE746 /* MapListView.swift in Sources */,
+				4833594726FC5A35004F0458 /* MapView.swift in Sources */,
 				48FDE49226F85A9E00A8238B /* VIDFileView.swift in Sources */,
 				48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */,
 				48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */,

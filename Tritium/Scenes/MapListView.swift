@@ -40,7 +40,13 @@ struct MapListView: View {
                 Text("Loading map ids...")
             case .loaded(let mapIDs):
                 List(mapIDs) { mapID in
-                    NavigationLink("\(mapID.name)", destination: MapView(mapID: mapID, assetLoader: model.assetLoader))
+                    NavigationLink(
+                        "\(mapID.name)",
+                        destination: LoadMapView(
+                            mapID: mapID,
+                            assetLoader: model.assetLoader
+                        )
+                    )
                 }
             }
         }
