@@ -13,7 +13,8 @@ struct TritiumApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(width: 1600, height: 800)
+                .fixedSize(horizontal: false, vertical: false)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }

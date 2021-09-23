@@ -9,6 +9,16 @@ import SwiftUI
 import Combine
 import Makt
 
+private extension Map {
+    var summary: String {
+        """
+        Name: \(basicInformation.name)
+        Size: \(basicInformation.size)
+        Players: \(playersInfo.players.count)/\(playersInfo.players.filter { $0.isPlayableByHuman }.count)
+        """
+    }
+}
+
 struct MapView: View {
     
     @ObservedObject var model: Model
@@ -24,9 +34,34 @@ struct MapView: View {
         case .loading:
             ProgressView("Loading map...")
         case .loaded(let map):
-            ScrollView {
-                Text(map.world.above.tileEmojiString)
-            }
+            render(map: map)
+        }
+    }
+    
+    func render(map: Map) -> some View {
+        VStack {
+            summaryOf(map: map)
+            world(map: map)
+        }
+    }
+    
+    func summaryOf(map: Map) -> some View {
+        Text(map.summary)
+    }
+    
+    func world(map: Map) -> some View {
+        ScrollView {
+            Text(map.world.above.tileEmojiString).font(.system(size: fontSize(map: map)))
+        }
+    }
+    
+    
+    func fontSize(map: Map) -> CGFloat {
+        switch map.basicInformation.size {
+        case .small: return 24
+        case .medium: return 12
+        case .large: return 10
+        default: return 6
         }
     }
 }
