@@ -38,12 +38,13 @@ struct MapListView: View {
                 ErrorView(error: error)
             case .loading:
                 Text("Loading map ids...")
-            case .loaded(let mapIDs):
-                List(mapIDs) { mapID in
+            case .loaded(let basicInfoForMaps):
+                let basicMapsBySize = basicInfoForMaps.sorted(by: \.size) //[Makt.Size: [Map.ID]] = basicInfoForMaps
+                List(basicMapsBySize) { basicMapInfo in
                     NavigationLink(
-                        "\(mapID.name)",
+                        "\(basicMapInfo.name)",
                         destination: LoadMapView(
-                            mapID: mapID,
+                            basicMapInfo: basicMapInfo,
                             assetLoader: model.assetLoader
                         )
                     )
@@ -55,7 +56,7 @@ struct MapListView: View {
 
 extension MapListView {
     final class Model: ObservableObject {
-        @Published var state: LoadingState<[Map.ID]> = .idle
+        @Published var state: LoadingState<[Map.BasicInformation]> = .idle
         
         private var cancellables = Set<AnyCancellable>()
         
@@ -85,7 +86,7 @@ extension MapListView.Model {
 
         state = .loading
   
-        assetLoader.loadMapIDs()
+        assetLoader.loadBasicInfoForAllMaps()
             .receive(on: RunLoop.main)
             .sink(
                 receiveCompletion: { [self] completion in
@@ -95,8 +96,8 @@ extension MapListView.Model {
                     case .finished:
                         break
                     }
-                }, receiveValue: { [self] mapIDs in
-                    state = .loaded(mapIDs)
+                }, receiveValue: { [self] basicInfoForMaps in
+                    state = .loaded(basicInfoForMaps)
                 }
             ).store(in: &cancellables)
     }

@@ -29,7 +29,7 @@ struct LoadMapView: View {
         NavigationView {
             switch model.state {
             case .idle:
-                Button("Load map: \(model.mapID.name) (parse)") {
+                Button("Load map: \(model.basicMapInfo.name) (parse)") {
                     model.load()
                 }
             case .failure(let error):
@@ -39,7 +39,7 @@ struct LoadMapView: View {
             case .loaded(let map):
                 VStack {
                     Text(map.summary)
-                    NavigationLink("Render map", destination: MapView(model: .init(map: map)))
+                    NavigationLink("Render map", destination: ProcessMapView(model: .init(map: map)))
                 }
             }
         }
@@ -53,12 +53,12 @@ extension LoadMapView {
         
         private var cancellables = Set<AnyCancellable>()
         
-        fileprivate let mapID: Map.ID
+        fileprivate let basicMapInfo: Map.BasicInformation
         
         private let mapPublisher: AnyPublisher<Map, AssetLoader.Error>
         
-        init(mapID: Map.ID, mapPublisher: AnyPublisher<Map, AssetLoader.Error>) {
-            self.mapID = mapID
+        init(basicMapInfo: Map.BasicInformation, mapPublisher: AnyPublisher<Map, AssetLoader.Error>) {
+            self.basicMapInfo = basicMapInfo
             self.mapPublisher = mapPublisher
         }
     }
@@ -67,19 +67,19 @@ extension LoadMapView {
 
 extension LoadMapView.Model {
     
-    convenience init(mapID: Map.ID, assetLoader: AssetLoader) {
-        self.init(mapID: mapID, mapPublisher: assetLoader.loadMap(id: mapID))
+    convenience init(basicMapInfo: Map.BasicInformation, assetLoader: AssetLoader) {
+        self.init(basicMapInfo: basicMapInfo, mapPublisher: assetLoader.loadMap(id: basicMapInfo.id))
     }
     
-    convenience init(mapID: Map.ID, config: Config, fileManager: FileManager = .default) {
-        self.init(mapID: mapID, assetLoader: .init(config: config, fileManager: fileManager))
+    convenience init(basicMapInfo: Map.BasicInformation, config: Config, fileManager: FileManager = .default) {
+        self.init(basicMapInfo: basicMapInfo, assetLoader: .init(config: config, fileManager: fileManager))
     }
 }
 
 extension LoadMapView {
-    init(mapID: Map.ID, assetLoader: AssetLoader) {
+    init(basicMapInfo: Map.BasicInformation, assetLoader: AssetLoader) {
         self.init(
-            model: .init(mapID: mapID, assetLoader: assetLoader)
+            model: .init(basicMapInfo: basicMapInfo, assetLoader: assetLoader)
         )
     }
 }

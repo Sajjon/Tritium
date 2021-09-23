@@ -1,5 +1,5 @@
 //
-//  MapView.swift
+//  ProcessMapView.swift
 //  Tritium
 //
 //  Created by Alexander Cyon on 2021-09-23.
@@ -8,33 +8,9 @@
 import SwiftUI
 import Combine
 import Makt
+import Guld
 
-struct ProcessedMap: Equatable {
-    let map: Map
-}
-
-struct RenderMapView: View {
-    let processedMap: ProcessedMap
-    
-    var body: some View {
-        ScrollView {
-            Text(processedMap.map.world.above.tileEmojiString)
-                .font(.system(size: fontSize(map: processedMap.map)))
-        }
-
-    }
-    
-    private func fontSize(map: Map) -> CGFloat {
-        switch map.basicInformation.size {
-        case .small: return 24
-        case .medium: return 12
-        case .large: return 10
-        default: return 6
-        }
-    }
-}
-
-struct MapView: View {
+struct ProcessMapView: View {
     @ObservedObject var model: Model
     
     @ViewBuilder
@@ -52,7 +28,7 @@ struct MapView: View {
     }
 }
 
-extension MapView {
+extension ProcessMapView {
     final class Model: ObservableObject {
         
         private let map: Map
@@ -73,7 +49,7 @@ extension MapView {
     }
 }
 
-extension MapView.Model {
+extension ProcessMapView.Model {
     func processMap() {
         state = .loading
         
@@ -91,21 +67,5 @@ extension MapView.Model {
                     state = .loaded(proccessMap)
                 }
             ).store(in: &cancellables)
-    }
-}
-
-final class MapProcessor {
-    init() {}
-}
-extension MapProcessor {
-    func process(map: Map) -> AnyPublisher<ProcessedMap, Never> {
-        return Future<ProcessedMap, Never> { promise in
-            DispatchQueue.init(label: "ProcessMap", qos: .background).async {
-                let processedMap = ProcessedMap.init(map: map)
-                promise(.success(processedMap))
-            }
-        }
-        .delay(for: .seconds(1), scheduler: DispatchQueue.main)
-        .eraseToAnyPublisher()
     }
 }
