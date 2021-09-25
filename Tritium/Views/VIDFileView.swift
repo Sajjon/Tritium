@@ -5,13 +5,12 @@
 //  Created by Alexander Cyon on 2021-09-20.
 //
 
-import Foundation
 import SwiftUI
-import Guld
-import Video
-import AVFoundation
 import Combine
-import Util
+//import AVFoundation
+import AVKit
+
+import Makt
 
 extension FileManager {
     var applicationSupportURL: URL {
@@ -33,12 +32,19 @@ struct VIDFileView: View {
 
 enum LoadingState<Model> {
     case idle
-    case loading
+    case loading(progress: LoadingProgress? = nil)
     case loaded(Model)
     case failure(Swift.Error)
+    
+    var isLoaded: Bool {
+        switch self {
+        case .loaded: return true
+        case .loading, .idle, .failure: return false
+        }
+    }
 }
 
-import AVKit
+
 struct VideoFileView: View {
     
     
@@ -92,7 +98,7 @@ struct VideoFileView: View {
         }
         
         func extractVideo() {
-            state = .loading
+            state = .loading(progress: nil)
             videoExtractor.extract(
                 data: videoFileEntry.contents,
                 name: videoFileEntry.name,

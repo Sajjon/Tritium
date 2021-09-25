@@ -13,11 +13,11 @@ import Combine
 
 struct ArchiveView: View {
     let loadedArchive: LoadedArchive
-    let imageLoader: ImageLoader
+    let assets: Assets
     var body: some View {
         switch loadedArchive {
         case .archive(let lodFile):
-            LodFileView(lodFile: lodFile, imageLoader: imageLoader)
+            LodFileView(lodFile: lodFile, assets: assets)
         case .sound(let sndFile):
             SNDFileView(sndFile: sndFile)
         case .video(let vidFile):

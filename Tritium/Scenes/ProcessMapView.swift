@@ -23,7 +23,7 @@ struct ProcessMapView: View {
         case .loading:
             ProgressView("Processing map for rendering...")
         case .loaded(let processedMap):
-            RenderMapView(processedMap: processedMap)
+            RenderMapView(processedMap: processedMap, assets: model.assets)
         }
     }
 }
@@ -38,12 +38,15 @@ extension ProcessMapView {
         private var cancellables = Set<AnyCancellable>()
         
         private let mapProccessor: MapProcessor
+        fileprivate let assets: Assets
         
         public init(
             map: Map,
+            assets: Assets,
             mapProccessor: MapProcessor = .init()
         ) {
             self.map = map
+            self.assets = assets
             self.mapProccessor = mapProccessor
         }
     }
@@ -51,7 +54,7 @@ extension ProcessMapView {
 
 extension ProcessMapView.Model {
     func processMap() {
-        state = .loading
+        state = .loading(progress: nil)
         
         mapProccessor.process(map: map)
             .receive(on: RunLoop.main)

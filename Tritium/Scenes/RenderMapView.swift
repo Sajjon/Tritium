@@ -10,11 +10,54 @@ import Combine
 import Makt
 
 struct TileView: View {
-    let tile: ProcessedMap.Tile
-    var body: some View {
-        Text(tile.emojiString)
-            .font(.system(.footnote))
+    
+    final class Model: ObservableObject {
+        
+        private let tile: ProcessedMap.Tile
+        private let assets: Assets
+
+        @Published var terrainImageState: LoadingState<CGImage> = .idle
+        
+        private var cancellables = Set<AnyCancellable>()
+        
+        func loadTerrainImage() {
+            terrainImageState = .loading(progress: nil)
+            assets
+                .loadImage(terrain: tile.terrain)
+                .receive(on: RunLoop.main)
+                .sink(
+                    receiveValue: { [self] terrainImage in
+                        terrainImageState = .loaded(terrainImage)
+                    }
+                ).store(in: &cancellables)
+        }
+        
+        init(
+            tile: ProcessedMap.Tile,
+            assets: Assets
+        ) {
+            self.tile = tile
+            self.assets = assets
+        }
+        
     }
+    
+    @ObservedObject var model: Model
+}
+
+extension TileView {
+    
+    @ViewBuilder
+    var body: some View {
+        switch model.terrainImageState {
+        case .idle: Color.white.onAppear(perform: model.loadTerrainImage)
+        case .loading: Color.gray
+        case .failure: Color.red
+        case .loaded(let terrainImage):
+            Image(decorative: terrainImage, scale: 1.0)
+        }
+    }
+    
 }
 
 
@@ -28,7 +71,7 @@ struct RenderMapView: View {
             spacing: 0
         ) {
             ForEach(model.tiles) { tile in
-                TileView(tile: tile)
+                TileView(model: .init(tile: tile, assets: model.assets))
             }
         }
     }
@@ -44,9 +87,11 @@ extension RenderMapView {
         }
         
         private let processedMap: ProcessedMap
+        fileprivate let assets: Assets
         
-        init(processedMap: ProcessedMap) {
+        init(processedMap: ProcessedMap, assets: Assets) {
             self.processedMap = processedMap
+            self.assets = assets
             
             columns = .init(
                 repeating: .init(
@@ -62,8 +107,8 @@ extension RenderMapView {
 }
 
 extension RenderMapView {
-    init(processedMap: ProcessedMap) {
-        self.init(model: .init(processedMap: processedMap))
+    init(processedMap: ProcessedMap, assets: Assets) {
+        self.init(model: .init(processedMap: processedMap, assets: assets))
     }
 }
 

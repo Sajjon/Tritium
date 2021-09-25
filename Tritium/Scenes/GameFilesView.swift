@@ -10,47 +10,42 @@ import Malm
 import Guld
 import Combine
 
+
 // MARK: GameFilesView
 struct GameFilesView: View {
     
-    @ObservedObject private var viewModel: ViewModel
+    @ObservedObject private var model: Model
     
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
+    init(model: Model) {
+        self.model = model
     }
 }
 
-// MARK: GameFilesView Init
-extension GameFilesView {
-    init(config: Config) {
-        self.init(viewModel: .init(config: config))
-    }
-}
 
 // MARK: View
 extension GameFilesView {
     
     var body: some View {
         Group {
-            switch viewModel.state {
+            switch model.state {
             case .error(let error):
                 Text("Error loading assets: \(String(describing: error))")
             case .loading(let request):
                 Text("Loading \(String(describing: request))...")
             case .idle:
                 Button("Load assets") {
-                    viewModel.loadArchives()
+                    model.loadArchives()
                 }
             case .loaded(let archives):
                 VStack(spacing: 40) {
                     ForEach(archives) { archiveFile in
                         Button("\(archiveFile.fileName) (#\(archiveFile.data.sizeString))") {
-                            viewModel.open(archiveFile: archiveFile)
+                            model.open(archiveFile: archiveFile)
                         }.padding()
                     }
                 }
             case .opened(let loadedArchive):
-                ArchiveView(loadedArchive: loadedArchive, imageLoader: viewModel.imageLoader)
+                ArchiveView(loadedArchive: loadedArchive, assets: model.assets)
             }
         }
        
@@ -59,23 +54,17 @@ extension GameFilesView {
 
 // MARK: ViewModel
 extension GameFilesView {
-    final class ViewModel: ObservableObject {
+    final class Model: ObservableObject {
 
         @Published var state: LoadingState = .idle
         
         private var cancellables = Set<AnyCancellable>()
-        private let assetLoader: AssetLoader
-        private let archiveLoader: ArchiveLoader
-        let imageLoader: ImageLoader
+        fileprivate let assets: Assets
 
         init(
-            assetLoader: AssetLoader,
-            archiveLoader: ArchiveLoader = .init(),
-            imageLoader: ImageLoader
+            assets: Assets
         ) {
-            self.assetLoader = assetLoader
-            self.archiveLoader = archiveLoader
-            self.imageLoader = imageLoader
+            self.assets = assets
         }
     }
 }
@@ -92,62 +81,44 @@ extension GameFilesView {
         case idle
         case loading(UserRequest)
         case loaded([ArchiveFile])
-        case error(GameFilesView.ViewModel.Error)
+        case error(GameFilesView.Model.Error)
         case opened(LoadedArchive)
     }
     
 }
 
-// MARK: ViewModel Init
-extension GameFilesView.ViewModel {
-    convenience init(config: Config, imageLoader: ImageLoader = .init()) {
-        self.init(assetLoader: .init(config: config), imageLoader: imageLoader)
-    }
-}
 
 // MARK: ViewModel Error
-extension GameFilesView.ViewModel {
+extension GameFilesView.Model {
     
     enum Error: Swift.Error {
         case unsupportedAsset(kind: String)
-        case failedToLoadAssetList(AssetLoader.Error)
-        case failedToOpenArchive(ArchiveLoader.Error)
+        case failedToLoadAssetList
+        case failedToOpenArchive
     }
 }
 
 // MARK: Load
-extension GameFilesView.ViewModel {
+extension GameFilesView.Model {
     func loadArchives() {
         state = .loading(.archives)
         
-        assetLoader.loadArchives()
+        assets.loadArchives()
             .receive(on: RunLoop.main)
-            .sink { [self] completion in
-                switch completion {
-                case .failure(let error):
-                    state = .error(.failedToLoadAssetList(error))
-                case .finished: break
-                }
-            } receiveValue: { [self] assetFiles in
+            .sink { [self] assetFiles in
                 state = .loaded(assetFiles)
             }.store(in: &cancellables)
     }
 }
 
 // MARK: Open
-extension GameFilesView.ViewModel {
+extension GameFilesView.Model {
     func open(archiveFile: ArchiveFile) {
         defer { state = .loading(.archiveFile(archiveFile)) }
         
-        archiveLoader.load(archiveFile: archiveFile)
+        assets.load(archiveFile: archiveFile) // .load(archiveFile: archiveFile)
             .receive(on: RunLoop.main)
-            .sink { [self] completion in
-                switch completion {
-                case .failure(let error):
-                    state = .error(.failedToOpenArchive(error))
-                case .finished: break
-                }
-            } receiveValue: { [self] loadedAsset in
+            .sink { [self] loadedAsset in
                 state = .opened(loadedAsset)
             }.store(in: &cancellables)
         

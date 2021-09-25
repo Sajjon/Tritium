@@ -11,45 +11,46 @@ import Makt
 
 struct LodFileView: View {
     let lodFile: LodFile
-    let imageLoader: ImageLoader
+    let assets: Assets
     var body: some View {
         VStack {
             Text("Lodfile: \(lodFile.lodFileName)")
             List(lodFile.entries, id: \.self) { fileEntry in
-                FileEntryView(fileEntry: fileEntry, imageLoader: imageLoader)
+                FileEntryView(fileEntry: fileEntry, assets: assets)
             }
         }
     }
     
     struct FileEntryView: View {
        
-        @ObservedObject var viewModel: ViewModel
+        @ObservedObject var model: Model
         
-        init(viewModel: ViewModel) {
-            self.viewModel = viewModel
+        init(model: Model) {
+            self.model = model
         }
         
         init(
             fileEntry: LodFile.FileEntry,
-            imageLoader: ImageLoader = .init()
+            assets: Assets
         ) {
             self.init(
-                viewModel: .init(
+                model: .init(
                     fileEntry: fileEntry,
-                    imageLoader: imageLoader)
+                    assets: assets
+                )
             )
         }
         
         var body: some View {
             VStack {
-                Text("Lod file entry: \(viewModel.fileEntryName)")
+                Text("Lod file entry: \(model.fileEntryName)")
                 Group {
-                    switch viewModel.state {
+                    switch model.state {
                     case .error(let error):
                         Text("Error loading fileEntry: \(String(describing: error))")
                     case .idle:
                         Button("Load file entry") {
-                            viewModel.loadEntry()
+                            model.loadEntry()
                         }
                     case .loading:
                         Text("Loading file entry..")
@@ -60,7 +61,7 @@ struct LodFileView: View {
             }
         }
         
-        func loadedAssetView(asset: ViewModel.LoadingState.Asset) -> AnyView {
+        func loadedAssetView(asset: Model.LoadingState.Asset) -> AnyView {
             Group {
             switch asset {
             case .text(let text):
@@ -68,7 +69,7 @@ struct LodFileView: View {
             case .image(let cgImage):
                 Image(decorative: cgImage, scale: 1.0)
             case .definitionFile(let definitionFile):
-                DefinitionFileView(definitionFile: definitionFile)
+                DefinitionFileView(definitionFile: definitionFile, assets: model.assets)
             case .campaign(let campaign):
                 Text("Campaign: \(campaign.header.name)")
             }
@@ -78,27 +79,27 @@ struct LodFileView: View {
 }
 
 extension LodFileView.FileEntryView {
-    final class ViewModel: ObservableObject {
+    final class Model: ObservableObject {
         
         let fileEntry: LodFile.FileEntry
-        private let imageLoader: ImageLoader
+        fileprivate let assets: Assets
         
         @Published var state: LoadingState = .idle
         private var cancellables = Set<AnyCancellable>()
         
         public init(
             fileEntry: LodFile.FileEntry,
-            imageLoader: ImageLoader = .init()
+            assets: Assets
         ) {
             self.fileEntry = fileEntry
-            self.imageLoader = imageLoader
+            self.assets = assets
         }
     }
 }
 
-private extension LodFileView.FileEntryView.ViewModel {
+private extension LodFileView.FileEntryView.Model {
     func loadPCX(_ pcxImage: PCXImage) -> AnyPublisher<CGImage, Never> {
-        imageLoader.loadImageFrom(pcx: pcxImage).catch({ _ in
+        assets.loadImageFrom(pcx: pcxImage).catch({ _ in
             return Deferred<AnyPublisher<CGImage, Never>> {
                 fatalError()
             }.eraseToAnyPublisher()
@@ -106,15 +107,15 @@ private extension LodFileView.FileEntryView.ViewModel {
     }
 }
 
-extension LodFileView.FileEntryView.ViewModel {
+extension LodFileView.FileEntryView.Model {
     
     var fileEntryName: String {
-        fileEntry.name
+        fileEntry.fileName
     }
     
     enum Error: Swift.Error {
         case unsupportedAsset(kind: String)
-        case failedToLoadImage(ImageLoader.Error)
+        case failedToLoadImage
     }
     
     enum LoadingState {
@@ -128,7 +129,7 @@ extension LodFileView.FileEntryView.ViewModel {
         case idle
         case loading
         case loaded(asset: Asset)
-        case error(LodFileView.FileEntryView.ViewModel.Error)
+        case error(LodFileView.FileEntryView.Model.Error)
     }
     
     func loadEntry() {

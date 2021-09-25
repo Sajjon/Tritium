@@ -39,7 +39,9 @@ struct LoadMapView: View {
             case .loaded(let map):
                 VStack {
                     Text(map.summary)
-                    NavigationLink("Render map", destination: ProcessMapView(model: .init(map: map)))
+                    NavigationLink(
+                        "Render map",
+                        destination: ProcessMapView(model: .init(map: map, assets: model.assets)))
                 }
             }
         }
@@ -55,31 +57,26 @@ extension LoadMapView {
         
         fileprivate let basicMapInfo: Map.BasicInformation
         
-        private let mapPublisher: AnyPublisher<Map, AssetLoader.Error>
+        private let mapPublisher: AnyPublisher<Map, Never>
+        fileprivate let assets: Assets
         
-        init(basicMapInfo: Map.BasicInformation, mapPublisher: AnyPublisher<Map, AssetLoader.Error>) {
+        init(
+            basicMapInfo: Map.BasicInformation,
+            assets: Assets
+//            mapPublisher: AnyPublisher<Map, Assets.Error>
+        ) {
+            self.assets = assets
             self.basicMapInfo = basicMapInfo
-            self.mapPublisher = mapPublisher
+            self.mapPublisher = assets.loadMap(id: basicMapInfo.id)
         }
     }
 }
 
 
-extension LoadMapView.Model {
-    
-    convenience init(basicMapInfo: Map.BasicInformation, assetLoader: AssetLoader) {
-        self.init(basicMapInfo: basicMapInfo, mapPublisher: assetLoader.loadMap(id: basicMapInfo.id))
-    }
-    
-    convenience init(basicMapInfo: Map.BasicInformation, config: Config, fileManager: FileManager = .default) {
-        self.init(basicMapInfo: basicMapInfo, assetLoader: .init(config: config, fileManager: fileManager))
-    }
-}
-
 extension LoadMapView {
-    init(basicMapInfo: Map.BasicInformation, assetLoader: AssetLoader) {
+    init(basicMapInfo: Map.BasicInformation, assets: Assets) {
         self.init(
-            model: .init(basicMapInfo: basicMapInfo, assetLoader: assetLoader)
+            model: .init(basicMapInfo: basicMapInfo, assets: assets)
         )
     }
 }
@@ -87,7 +84,7 @@ extension LoadMapView {
 
 extension LoadMapView.Model {
     func load() {
-        state = .loading
+        state = .loading(progress: nil)
         
         mapPublisher
             .receive(on: RunLoop.main)
