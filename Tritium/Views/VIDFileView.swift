@@ -106,7 +106,7 @@ struct VideoFileView: View {
                 outputDirectory: videoDirectory
             )
                 .receive(on: RunLoop.main).sink(
-                    receiveCompletion: { [self] completion in
+                    receiveCompletion: { [unowned self] completion in
                         switch completion {
                         case .failure(let error):
                             state = .failure(error)
@@ -114,7 +114,7 @@ struct VideoFileView: View {
                             break
                         }
                         
-                    }, receiveValue: { [self] url in
+                    }, receiveValue: { [unowned self] url in
                         assert(url == videoFileURL)
                         print("✅ successfully converted video: \(url)")
                         state = .loaded(AVPlayer(url: url))

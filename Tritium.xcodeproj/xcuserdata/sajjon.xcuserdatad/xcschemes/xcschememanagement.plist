@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>⚡️Tritium FAST⚡️.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>4833594A26FCF5D1004F0458</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>487C324E26F321FB00FC7459</key>
 		<dict>
 			<key>primary</key>

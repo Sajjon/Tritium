@@ -105,7 +105,7 @@ extension GameFilesView.Model {
         
         assets.loadArchives()
             .receive(on: RunLoop.main)
-            .sink { [self] assetFiles in
+            .sink { [unowned self] assetFiles in
                 state = .loaded(assetFiles)
             }.store(in: &cancellables)
     }
@@ -118,7 +118,7 @@ extension GameFilesView.Model {
         
         assets.load(archiveFile: archiveFile) // .load(archiveFile: archiveFile)
             .receive(on: RunLoop.main)
-            .sink { [self] loadedAsset in
+            .sink { [unowned self] loadedAsset in
                 state = .opened(loadedAsset)
             }.store(in: &cancellables)
         

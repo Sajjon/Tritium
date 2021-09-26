@@ -105,7 +105,7 @@ extension MapListView {
 //
 //        assets.loadBasicInfoForAllMaps()
 //            .receive(on: RunLoop.main)
-//            .sink(receiveValue: { [self] basicInfoForMaps in
+//            .sink(receiveValue: { [unowned self] basicInfoForMaps in
 //                    state = .loaded(basicInfoForMaps)
 //                }
 //            ).store(in: &cancellables)

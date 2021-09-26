@@ -109,7 +109,7 @@ extension BlockFrameView.Model {
                 palette: palette
             )
             .receive(on: RunLoop.main)
-            .sink { [self] image in
+            .sink { [unowned self] image in
                 state = .loaded(image)
             }.store(in: &cancellables)
     }

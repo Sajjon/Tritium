@@ -10,52 +10,32 @@ import Combine
 import Makt
 
 struct TileView: View {
-    
-    final class Model: ObservableObject {
-        
-        private let tile: ProcessedMap.Tile
-        private let assets: Assets
-
-        @Published var terrainImageState: LoadingState<CGImage> = .idle
-        
-        private var cancellables = Set<AnyCancellable>()
-        
-        func loadTerrainImage() {
-            terrainImageState = .loading(progress: nil)
-            assets
-                .loadImage(terrain: tile.terrain)
-                .receive(on: RunLoop.main)
-                .sink(
-                    receiveValue: { [self] terrainImage in
-                        terrainImageState = .loaded(terrainImage)
-                    }
-                ).store(in: &cancellables)
-        }
-        
-        init(
-            tile: ProcessedMap.Tile,
-            assets: Assets
-        ) {
-            self.tile = tile
-            self.assets = assets
-        }
-        
-    }
-    
-    @ObservedObject var model: Model
+    let tile: ProcessedMap.Tile
+//    final class Model: ObservableObject {
+//
+//        private let tile: ProcessedMap.Tile
+//        private let assets: Assets
+//
+//        let terrainSurfaceImage: LoadedImage
+//
+//
+//        init(
+//            tile: ProcessedMap.Tile,
+//            terrainSurfaceImage: LoadedImage,
+//        ) {
+//            self.tile = tile
+//        }
+//
+//    }
+//
+//    @ObservedObject var model: Model
 }
 
 extension TileView {
     
     @ViewBuilder
     var body: some View {
-        switch model.terrainImageState {
-        case .idle: Color.white.onAppear(perform: model.loadTerrainImage)
-        case .loading: Color.gray
-        case .failure: Color.red
-        case .loaded(let terrainImage):
-            Image(decorative: terrainImage, scale: 1.0)
-        }
+        Image(decorative: tile.surfaceImage.image, scale: 1.0).frame(width: 32, height: 32)
     }
     
 }
@@ -71,9 +51,9 @@ struct RenderMapView: View {
             spacing: 0
         ) {
             ForEach(model.tiles) { tile in
-                TileView(model: .init(tile: tile, assets: model.assets))
+                TileView.init(tile: tile)
             }
-        }
+        }.frame(width: 1152, height: 1152)
     }
 }
 
@@ -95,7 +75,7 @@ extension RenderMapView {
             
             columns = .init(
                 repeating: .init(
-                    .fixed(10),
+                    .flexible(minimum: 32, maximum: 32),
                     spacing: 0,
                     alignment: .center
                 ),

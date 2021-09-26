@@ -47,13 +47,13 @@ struct ContentView: View {
                 config: config,
                 progressSubject: loadingProgressSubject
             ).receive(on: RunLoop.main)
-                .sink(receiveValue: { [self] assets in
+                .sink(receiveValue: { [unowned self] assets in
                     state = .loaded(assets)
                 }).store(in: &cancellables)
             
             loadingProgressSubject
                 .receive(on: RunLoop.main)
-                .sink(receiveValue: { [self] progress in
+                .sink(receiveValue: { [unowned self] progress in
                 guard !state.isLoaded else { return }
                 state = .loading(progress: progress)
             }).store(in: &cancellables)

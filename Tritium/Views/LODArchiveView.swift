@@ -142,19 +142,19 @@ extension LodFileView.FileEntryView.Model {
         case .text(let textPublisher):
             textPublisher
                 .receive(on: RunLoop.main)
-                .sink { [self] text in
+                .sink { [unowned self] text in
                     state = .loaded(asset: .text(text))
                 }.store(in: &cancellables)
         case .def(let defPublisher):
             defPublisher
                 .receive(on: RunLoop.main)
-                .sink { [self] definitionFile in
+                .sink { [unowned self] definitionFile in
                     state = .loaded(asset: .definitionFile(definitionFile))
                 }.store(in: &cancellables)
         case .pcx(let pcxPublisher):
             pcxPublisher.flatMap(loadPCX)
                 .receive(on: RunLoop.main)
-                .sink { [self] image in
+                .sink { [unowned self] image in
                     state = .loaded(asset: .image(image))
                 }.store(in: &cancellables)
         case .font:
@@ -162,7 +162,7 @@ extension LodFileView.FileEntryView.Model {
         case .campaign(let campaignPublisher):
             campaignPublisher
                 .receive(on: RunLoop.main)
-                .sink { [self] campaign in
+                .sink { [unowned self] campaign in
                     state = .loaded(asset: .campaign(campaign))
                 }.store(in: &cancellables)
         case .palette:
@@ -170,7 +170,7 @@ extension LodFileView.FileEntryView.Model {
         case .mask(let maskPublisher):
             maskPublisher
                 .receive(on: RunLoop.main)
-                .sink { [self] mask in
+                .sink { [unowned self] mask in
                     state = .loaded(asset: .text("Mask:\n\n\(String(describing: mask))\n"))
                 }.store(in: &cancellables)
         }

@@ -42,12 +42,11 @@ extension ProcessMapView {
         
         public init(
             map: Map,
-            assets: Assets,
-            mapProccessor: MapProcessor = .init()
+            assets: Assets
         ) {
             self.map = map
             self.assets = assets
-            self.mapProccessor = mapProccessor
+            self.mapProccessor = .init(assets: assets)
         }
     }
 }
@@ -59,14 +58,14 @@ extension ProcessMapView.Model {
         mapProccessor.process(map: map)
             .receive(on: RunLoop.main)
             .sink(
-                receiveCompletion: { [self] completion in
+                receiveCompletion: { [unowned self] completion in
                     switch completion {
                     case .failure(let error):
                         state = .failure(error)
                     case .finished:
                         break
                     }
-                }, receiveValue: { [self] proccessMap in
+                }, receiveValue: { [unowned self] proccessMap in
                     state = .loaded(proccessMap)
                 }
             ).store(in: &cancellables)

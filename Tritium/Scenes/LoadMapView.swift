@@ -89,7 +89,7 @@ extension LoadMapView.Model {
         mapPublisher
             .receive(on: RunLoop.main)
             .sink(
-                receiveCompletion: { [self] completion in
+                receiveCompletion: { [unowned self] completion in
                     switch completion {
                     case .failure(let error):
                         state = .failure(error)
@@ -97,7 +97,7 @@ extension LoadMapView.Model {
                         break
                     }
                     
-                }, receiveValue: { [self] map in
+                }, receiveValue: { [unowned self] map in
                     
                     state = .loaded(map)
                 }
