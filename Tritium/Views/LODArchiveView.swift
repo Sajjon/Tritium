@@ -71,7 +71,7 @@ struct LodFileView: View {
             case .definitionFile(let definitionFile):
                 DefinitionFileView(definitionFile: definitionFile, assets: model.assets)
             case .campaign(let campaign):
-                Text("Campaign: \(campaign.header.name)")
+                Text("Campaign: \(String(describing: campaign))")
             }
             }.eraseToAnyView()
         }
@@ -99,11 +99,12 @@ extension LodFileView.FileEntryView {
 
 private extension LodFileView.FileEntryView.Model {
     func loadPCX(_ pcxImage: PCXImage) -> AnyPublisher<CGImage, Never> {
-        assets.loadImageFrom(pcx: pcxImage).catch({ _ in
-            return Deferred<AnyPublisher<CGImage, Never>> {
-                fatalError()
-            }.eraseToAnyPublisher()
-        }).eraseToAnyPublisher()
+//        assets.loadImageFrom(pcx: pcxImage).catch({ _ in
+//            return Deferred<AnyPublisher<CGImage, Never>> {
+//                fatalError()
+//            }.eraseToAnyPublisher()
+//        }).eraseToAnyPublisher()
+        fatalError()
     }
 }
 
@@ -133,47 +134,48 @@ extension LodFileView.FileEntryView.Model {
     }
     
     func loadEntry() {
-        state = .loading
-        
-
-        switch fileEntry.content {
-        case .xmi:
-            fatalError("handle")
-        case .text(let textPublisher):
-            textPublisher
-                .receive(on: RunLoop.main)
-                .sink { [unowned self] text in
-                    state = .loaded(asset: .text(text))
-                }.store(in: &cancellables)
-        case .def(let defPublisher):
-            defPublisher
-                .receive(on: RunLoop.main)
-                .sink { [unowned self] definitionFile in
-                    state = .loaded(asset: .definitionFile(definitionFile))
-                }.store(in: &cancellables)
-        case .pcx(let pcxPublisher):
-            pcxPublisher.flatMap(loadPCX)
-                .receive(on: RunLoop.main)
-                .sink { [unowned self] image in
-                    state = .loaded(asset: .image(image))
-                }.store(in: &cancellables)
-        case .font:
-            fatalError("handle")
-        case .campaign(let campaignPublisher):
-            campaignPublisher
-                .receive(on: RunLoop.main)
-                .sink { [unowned self] campaign in
-                    state = .loaded(asset: .campaign(campaign))
-                }.store(in: &cancellables)
-        case .palette:
-            fatalError("handle")
-        case .mask(let maskPublisher):
-            maskPublisher
-                .receive(on: RunLoop.main)
-                .sink { [unowned self] mask in
-                    state = .loaded(asset: .text("Mask:\n\n\(String(describing: mask))\n"))
-                }.store(in: &cancellables)
-        }
+//        state = .loading
+//
+//
+//        switch fileEntry.content {
+//        case .xmi:
+//            fatalError("handle")
+//        case .text(let textPublisher):
+//            textPublisher
+//                .receive(on: RunLoop.main)
+//                .sink { [unowned self] text in
+//                    state = .loaded(asset: .text(text))
+//                }.store(in: &cancellables)
+//        case .def(let defPublisher):
+//            defPublisher
+//                .receive(on: RunLoop.main)
+//                .sink { [unowned self] definitionFile in
+//                    state = .loaded(asset: .definitionFile(definitionFile))
+//                }.store(in: &cancellables)
+//        case .pcx(let pcxPublisher):
+//            pcxPublisher.flatMap(loadPCX)
+//                .receive(on: RunLoop.main)
+//                .sink { [unowned self] image in
+//                    state = .loaded(asset: .image(image))
+//                }.store(in: &cancellables)
+//        case .font:
+//            fatalError("handle")
+//        case .campaign(let campaignPublisher):
+//            campaignPublisher
+//                .receive(on: RunLoop.main)
+//                .sink { [unowned self] campaign in
+//                    state = .loaded(asset: .campaign(campaign))
+//                }.store(in: &cancellables)
+//        case .palette:
+//            fatalError("handle")
+//        case .mask(let maskPublisher):
+//            maskPublisher
+//                .receive(on: RunLoop.main)
+//                .sink { [unowned self] mask in
+//                    state = .loaded(asset: .text("Mask:\n\n\(String(describing: mask))\n"))
+//                }.store(in: &cancellables)
+//        }
+        fatalError()
     }
 }
 

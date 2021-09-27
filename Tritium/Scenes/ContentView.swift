@@ -33,7 +33,6 @@ struct ContentView: View {
         }
         @Published var state: LoadingState<Assets> = AssetsProvider.sharedAssets.map({ .loaded($0) }) ?? .idle
         
-        private let loadingProgressSubject = PassthroughSubject<LoadingProgress, Never>()
         
         fileprivate var cancellables = Set<AnyCancellable>()
         
@@ -43,20 +42,24 @@ struct ContentView: View {
                 return
             }
             state = .loading(progress: LoadingProgress.step(named: "Initiating loading of archives."))
-            AssetsProvider.provide(
-                config: config,
-                progressSubject: loadingProgressSubject
-            ).receive(on: RunLoop.main)
+            
+            let onLoadingProgress: ((LoadingProgress) -> Void) = { [unowned self] newProgress in
+                DispatchQueue.main.async {
+                    state = .loading(progress: newProgress)
+                }
+            }
+            
+            Publishers.noFail(
+                async: try AssetsProvider.provide(
+                    config: config,
+                    onLoadingProgress: onLoadingProgress
+                )
+            )
                 .sink(receiveValue: { [unowned self] assets in
                     state = .loaded(assets)
                 }).store(in: &cancellables)
             
-            loadingProgressSubject
-                .receive(on: RunLoop.main)
-                .sink(receiveValue: { [unowned self] progress in
-                guard !state.isLoaded else { return }
-                state = .loading(progress: progress)
-            }).store(in: &cancellables)
+  
         }
     }
     

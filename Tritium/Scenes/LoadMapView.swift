@@ -67,11 +67,33 @@ extension LoadMapView {
         ) {
             self.assets = assets
             self.basicMapInfo = basicMapInfo
-            self.mapPublisher = assets.loadMap(id: basicMapInfo.id)
+            self.mapPublisher = Publishers.noFail(async: try assets.loadMap(id: basicMapInfo.id))
         }
     }
 }
 
+extension Publishers {
+    static func noFail<Value>(async syncDo: @autoclosure @escaping () throws -> Value) -> AnyPublisher<Value, Never> {
+        noFailAsync(syncDo)
+    }
+    
+    static func noFailAsync<Value>(_ syncDo: @escaping () throws -> Value) -> AnyPublisher<Value, Never> {
+        Deferred {
+            Future<Value, Never> { promise in
+                DispatchQueue.global(qos: .background).async {
+                    do {
+                        let value = try syncDo()
+                        promise(.success(value))
+                    } catch {
+                        uncaught(error: error)
+                    }
+                }
+            }
+        }
+        .receive(on: RunLoop.main)
+        .eraseToAnyPublisher()
+    }
+}
 
 extension LoadMapView {
     init(basicMapInfo: Map.BasicInformation, assets: Assets) {
@@ -87,7 +109,6 @@ extension LoadMapView.Model {
         state = .loading(progress: nil)
         
         mapPublisher
-            .receive(on: RunLoop.main)
             .sink(
                 receiveCompletion: { [unowned self] completion in
                     switch completion {

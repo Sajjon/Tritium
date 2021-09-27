@@ -104,14 +104,16 @@ extension BlockFrameView {
 
 extension BlockFrameView.Model {
     func loadPCXImage() {
-        assets.loadImageFrom(
-                defFilFrame: frame,
-                palette: palette
-            )
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] image in
-                state = .loaded(image)
-            }.store(in: &cancellables)
+//        Publishers.noFail(async:     try assets.loadImageFrom(
+//            defFilFrame: frame,
+//            palette: palette
+//        ))
+//
+//            .receive(on: RunLoop.main)
+//            .sink { [unowned self] image in
+//                state = .loaded(image)
+//            }.store(in: &cancellables)
+        fatalError()
     }
 
 }

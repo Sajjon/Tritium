@@ -55,18 +55,10 @@ extension ProcessMapView.Model {
     func processMap() {
         state = .loading(progress: nil)
         
-        mapProccessor.process(map: map)
-            .receive(on: RunLoop.main)
+        Publishers.noFailAsync { [unowned self] in try self.mapProccessor.process(map: map) }
             .sink(
-                receiveCompletion: { [unowned self] completion in
-                    switch completion {
-                    case .failure(let error):
-                        state = .failure(error)
-                    case .finished:
-                        break
-                    }
-                }, receiveValue: { [unowned self] proccessMap in
-                    state = .loaded(proccessMap)
+                receiveValue: { [unowned self] processedMap in
+                    state = .loaded(processedMap)
                 }
             ).store(in: &cancellables)
     }

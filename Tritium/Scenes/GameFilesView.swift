@@ -103,11 +103,12 @@ extension GameFilesView.Model {
     func loadArchives() {
         state = .loading(.archives)
         
-        assets.loadArchives()
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] assetFiles in
-                state = .loaded(assetFiles)
-            }.store(in: &cancellables)
+//        assets.loadArchives()
+//            .receive(on: RunLoop.main)
+//            .sink { [unowned self] assetFiles in
+//                state = .loaded(assetFiles)
+//            }.store(in: &cancellables)
+        fatalError()
     }
 }
 
@@ -116,11 +117,12 @@ extension GameFilesView.Model {
     func open(archiveFile: ArchiveFile) {
         defer { state = .loading(.archiveFile(archiveFile)) }
         
-        assets.load(archiveFile: archiveFile) // .load(archiveFile: archiveFile)
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] loadedAsset in
-                state = .opened(loadedAsset)
-            }.store(in: &cancellables)
+//        assets.load(archiveFile: archiveFile) // .load(archiveFile: archiveFile)
+//            .receive(on: RunLoop.main)
+//            .sink { [unowned self] loadedAsset in
+//                state = .opened(loadedAsset)
+//            }.store(in: &cancellables)
+        fatalError()
         
     }
 }
