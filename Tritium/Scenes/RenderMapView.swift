@@ -11,35 +11,21 @@ import Makt
 
 struct TileView: View {
     let tile: ProcessedMap.Tile
-//    final class Model: ObservableObject {
-//
-//        private let tile: ProcessedMap.Tile
-//        private let assets: Assets
-//
-//        let terrainSurfaceImage: LoadedImage
-//
-//
-//        init(
-//            tile: ProcessedMap.Tile,
-//            terrainSurfaceImage: LoadedImage,
-//        ) {
-//            self.tile = tile
-//        }
-//
-//    }
-//
-//    @ObservedObject var model: Model
 }
 
 extension TileView {
     
     @ViewBuilder
     var body: some View {
-        Image(decorative: tile.surfaceImage.image, scale: 1.0).frame(width: 32, height: 32)
+        ZStack {
+            Image(decorative: tile.surfaceImage.image.cgImage, scale: 1.0).frame(width: 32, height: 32)
+            Text("\(tile.terrain.mirroring.flipVertical == true ? "v" : "")\(tile.terrain.mirroring.flipHorizontal == true ? "h" : "")")
+        }.onTapGesture {
+            print(tile)
+        }
     }
     
 }
-
 
 struct RenderMapView: View {
     @ObservedObject var model: Model
