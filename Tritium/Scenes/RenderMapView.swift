@@ -19,7 +19,7 @@ extension TileView {
     var body: some View {
         ZStack {
             Image(decorative: tile.surfaceImage.image.cgImage, scale: 1.0).frame(width: 32, height: 32)
-            Text("\(tile.terrain.mirroring.flipVertical == true ? "v" : "")\(tile.terrain.mirroring.flipHorizontal == true ? "h" : "")")
+//            Text("\(tile.terrain.mirroring.flipVertical == true ? "v" : "")\(tile.terrain.mirroring.flipHorizontal == true ? "h" : "")")
         }.onTapGesture {
             print(tile)
         }
@@ -39,7 +39,7 @@ struct RenderMapView: View {
             ForEach(model.tiles) { tile in
                 TileView.init(tile: tile)
             }
-        }.frame(width: 1152, height: 1152)
+        }
     }
 }
 
