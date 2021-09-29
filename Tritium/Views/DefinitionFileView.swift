@@ -62,7 +62,6 @@ struct BlockFrameView: View {
     var body: some View {
         VStack {
             Text("\t\tFRAME: File name: \(model.frame.fileName)")
-            Text("\t\tFRAME: Size: \(String(describing: model.frame.width)) x \(String(describing: model.frame.height))")
          
             switch model.state {
             case .idle:

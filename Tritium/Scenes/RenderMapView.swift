@@ -18,9 +18,11 @@ extension TileView {
     @ViewBuilder
     var body: some View {
         ZStack {
-            Image(decorative: tile.surfaceImage.image.cgImage, scale: 1.0).frame(width: 32, height: 32)
-//            Text("\(tile.terrain.mirroring.flipVertical == true ? "v" : "")\(tile.terrain.mirroring.flipHorizontal == true ? "h" : "")")
-        }.onTapGesture {
+            ForEach(tile.images) { image in
+                Image(decorative: image.cgImage, scale: 1.0)
+            }
+        }.frame(width: 32, height: 32)
+        .onTapGesture {
             print(tile)
         }
     }
