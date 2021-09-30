@@ -11,6 +11,7 @@ import Makt
 
 struct TileView: View {
     let tile: ProcessedMap.Tile
+    let onTap: () -> Void
 }
 
 extension TileView {
@@ -21,16 +22,16 @@ extension TileView {
             ForEach(tile.images) { image in
                 Image(decorative: image.cgImage, scale: 1.0)
             }
-        }.frame(width: 32, height: 32)
-        .onTapGesture {
-            print(tile)
         }
+        .frame(width: 32, height: 32)
+        .onTapGesture(perform: onTap)
     }
     
 }
 
 struct RenderMapView: View {
     @ObservedObject var model: Model
+    @State private var debugTile: ProcessedMap.Tile? = nil
     
     var body: some View {
         LazyVGrid(
@@ -39,7 +40,14 @@ struct RenderMapView: View {
             spacing: 0
         ) {
             ForEach(model.tiles) { tile in
-                TileView.init(tile: tile)
+                TileView(tile: tile) {
+                    debugTile = tile
+                }
+            }
+        }
+        .sheet(isPresented: .constant(debugTile != nil)) {
+            DebugTileView(tile: debugTile!) {
+                debugTile = nil
             }
         }
     }
@@ -50,9 +58,7 @@ extension RenderMapView {
     final class Model: ObservableObject {
         @Published var columns: [GridItem]
         
-        var tiles: [ProcessedMap.Tile] {
-            processedMap.aboveGroundTiles
-        }
+        @Published var tiles: [ProcessedMap.Tile]
         
         private let processedMap: ProcessedMap
         fileprivate let assets: Assets
@@ -69,6 +75,8 @@ extension RenderMapView {
                 ),
                 count: processedMap.width
             )
+            
+            tiles = processedMap.aboveGroundTiles
             
         }
     }

@@ -76,7 +76,7 @@ struct ContentView: View {
             case .failure(let error):
                 ErrorView(error: error)
             case .loaded(let assets):
-                viewsRequiring(assets: assets)
+                MapListView(model: .init(assets: assets))
             case .loading(let maybeProgress):
                     VStack {
                         Text("Loading")
@@ -99,23 +99,6 @@ struct ContentView: View {
         }
     }
     
-    func viewsRequiring(assets: Assets) -> some View {
-        VStack {
-            Picker("Open asset class", selection: $model.selection) {
-                Text("Maps").tag(Model.ViewSelection.mapList)
-                Text("Archives").tag(Model.ViewSelection.archiveList)
-            }.pickerStyle(SegmentedPickerStyle()).frame(minHeight: 60)
-            
-            Group {
-                switch model.selection {
-                case .archiveList:
-                    GameFilesView(model: .init(assets: assets))
-                case .mapList:
-                    MapListView(model: .init(assets: assets))
-                }
-            }
-        }
-    }
-    
+   
 
 }

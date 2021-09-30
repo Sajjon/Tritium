@@ -10,21 +10,15 @@
 		4833594526FB663C004F0458 /* LoadMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594426FB663C004F0458 /* LoadMapView.swift */; };
 		4833594726FC5A35004F0458 /* ProcessMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594626FC5A35004F0458 /* ProcessMapView.swift */; };
 		4833594926FC9F12004F0458 /* RenderMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594826FC9F12004F0458 /* RenderMapView.swift */; };
-		4833594E26FCF5D1004F0458 /* LODArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489AEAD526FAF652003AE746 /* LODArchiveView.swift */; };
-		4833594F26FCF5D1004F0458 /* GameFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48026F47B2100A8238B /* GameFilesView.swift */; };
 		4833595026FCF5D1004F0458 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325426F321FB00FC7459 /* ConfigView.swift */; };
 		4833595126FCF5D1004F0458 /* RenderMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594826FC9F12004F0458 /* RenderMapView.swift */; };
-		4833595226FCF5D1004F0458 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48B26F4C82600A8238B /* ArchiveView.swift */; };
 		4833595326FCF5D1004F0458 /* LoadMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594426FB663C004F0458 /* LoadMapView.swift */; };
-		4833595426FCF5D1004F0458 /* SNDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48F26F84AE600A8238B /* SNDFileView.swift */; };
 		4833595526FCF5D1004F0458 /* MapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489AEAD726FAF7F4003AE746 /* MapListView.swift */; };
 		4833595626FCF5D1004F0458 /* ProcessMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833594626FC5A35004F0458 /* ProcessMapView.swift */; };
-		4833595726FCF5D1004F0458 /* VIDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE49126F85A9E00A8238B /* VIDFileView.swift */; };
 		4833595826FCF5D1004F0458 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47E26F47AE800A8238B /* View+Extension.swift */; };
 		4833595926FCF5D1004F0458 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48826F4C78500A8238B /* Data+Extensions.swift */; };
 		4833595A26FCF5D1004F0458 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47B26F47A9300A8238B /* ContentView.swift */; };
 		4833595B26FCF5D1004F0458 /* TritiumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C325226F321FB00FC7459 /* TritiumApp.swift */; };
-		4833595C26FCF5D1004F0458 /* DefinitionFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48D26F7314300A8238B /* DefinitionFileView.swift */; };
 		4833595E26FCF5D1004F0458 /* Makt in Frameworks */ = {isa = PBXBuildFile; productRef = 4833594C26FCF5D1004F0458 /* Makt */; };
 		4833596026FCF5D1004F0458 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325926F321FF00FC7459 /* Preview Assets.xcassets */; };
 		4833596126FCF5D1004F0458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325626F321FF00FC7459 /* Assets.xcassets */; };
@@ -33,17 +27,15 @@
 		487C325726F321FF00FC7459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325626F321FF00FC7459 /* Assets.xcassets */; };
 		487C325A26F321FF00FC7459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C325926F321FF00FC7459 /* Preview Assets.xcassets */; };
 		487C326426F3220000FC7459 /* TritiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C326326F3220000FC7459 /* TritiumTests.swift */; };
-		489AEAD626FAF652003AE746 /* LODArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489AEAD526FAF652003AE746 /* LODArchiveView.swift */; };
+		487D62C42705DCCC00E77C03 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D62C32705DCCC00E77C03 /* LoadingState.swift */; };
+		487D62C52705DCD100E77C03 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D62C32705DCCC00E77C03 /* LoadingState.swift */; };
+		487D62C82705DDD300E77C03 /* DebugTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D62C72705DDD300E77C03 /* DebugTileView.swift */; };
+		487D62C92705DDD300E77C03 /* DebugTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D62C72705DDD300E77C03 /* DebugTileView.swift */; };
 		489AEAD826FAF7F4003AE746 /* MapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489AEAD726FAF7F4003AE746 /* MapListView.swift */; };
 		48FDE47426F32C9300A8238B /* Makt in Frameworks */ = {isa = PBXBuildFile; productRef = 48FDE47326F32C9300A8238B /* Makt */; };
 		48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47B26F47A9300A8238B /* ContentView.swift */; };
 		48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE47E26F47AE800A8238B /* View+Extension.swift */; };
-		48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48026F47B2100A8238B /* GameFilesView.swift */; };
 		48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48826F4C78500A8238B /* Data+Extensions.swift */; };
-		48FDE48C26F4C82600A8238B /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48B26F4C82600A8238B /* ArchiveView.swift */; };
-		48FDE48E26F7314300A8238B /* DefinitionFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48D26F7314300A8238B /* DefinitionFileView.swift */; };
-		48FDE49026F84AE600A8238B /* SNDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE48F26F84AE600A8238B /* SNDFileView.swift */; };
-		48FDE49226F85A9E00A8238B /* VIDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDE49126F85A9E00A8238B /* VIDFileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,17 +61,13 @@
 		487C325F26F3220000FC7459 /* TritiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		487C326326F3220000FC7459 /* TritiumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TritiumTests.swift; sourceTree = "<group>"; };
 		487C328326F323C800FC7459 /* Makt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Makt; path = ../Makt; sourceTree = "<group>"; };
-		489AEAD526FAF652003AE746 /* LODArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LODArchiveView.swift; sourceTree = "<group>"; };
+		487D62C32705DCCC00E77C03 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		487D62C72705DDD300E77C03 /* DebugTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTileView.swift; sourceTree = "<group>"; };
 		489AEAD726FAF7F4003AE746 /* MapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListView.swift; sourceTree = "<group>"; };
 		48FDE47826F3652100A8238B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		48FDE47B26F47A9300A8238B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		48FDE47E26F47AE800A8238B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
-		48FDE48026F47B2100A8238B /* GameFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilesView.swift; sourceTree = "<group>"; };
 		48FDE48826F4C78500A8238B /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
-		48FDE48B26F4C82600A8238B /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
-		48FDE48D26F7314300A8238B /* DefinitionFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionFileView.swift; sourceTree = "<group>"; };
-		48FDE48F26F84AE600A8238B /* SNDFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNDFileView.swift; sourceTree = "<group>"; };
-		48FDE49126F85A9E00A8238B /* VIDFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIDFileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +122,7 @@
 		487C325126F321FB00FC7459 /* Tritium */ = {
 			isa = PBXGroup;
 			children = (
-				48FDE48A26F4C81E00A8238B /* Views */,
+				487D62C22705DCC300E77C03 /* Models */,
 				48FDE48726F4C77C00A8238B /* Extensions */,
 				48FDE48326F47B4400A8238B /* Scenes */,
 				48FDE48226F47B3600A8238B /* App */,
@@ -176,6 +164,22 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		487D62C22705DCC300E77C03 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				487D62C32705DCCC00E77C03 /* LoadingState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		487D62C62705DDC600E77C03 /* RenderMap */ = {
+			isa = PBXGroup;
+			children = (
+				487D62C72705DDD300E77C03 /* DebugTileView.swift */,
+			);
+			path = RenderMap;
+			sourceTree = "<group>";
+		};
 		48FDE47D26F47ADB00A8238B /* View+Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +199,7 @@
 		48FDE48326F47B4400A8238B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				48FDE48026F47B2100A8238B /* GameFilesView.swift */,
+				487D62C62705DDC600E77C03 /* RenderMap */,
 				48FDE47B26F47A9300A8238B /* ContentView.swift */,
 				487C325426F321FB00FC7459 /* ConfigView.swift */,
 				489AEAD726FAF7F4003AE746 /* MapListView.swift */,
@@ -212,18 +216,6 @@
 				48FDE48826F4C78500A8238B /* Data+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		48FDE48A26F4C81E00A8238B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				48FDE48B26F4C82600A8238B /* ArchiveView.swift */,
-				48FDE48F26F84AE600A8238B /* SNDFileView.swift */,
-				48FDE49126F85A9E00A8238B /* VIDFileView.swift */,
-				48FDE48D26F7314300A8238B /* DefinitionFileView.swift */,
-				489AEAD526FAF652003AE746 /* LODArchiveView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,21 +353,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4833594E26FCF5D1004F0458 /* LODArchiveView.swift in Sources */,
-				4833594F26FCF5D1004F0458 /* GameFilesView.swift in Sources */,
 				4833595026FCF5D1004F0458 /* ConfigView.swift in Sources */,
 				4833595126FCF5D1004F0458 /* RenderMapView.swift in Sources */,
-				4833595226FCF5D1004F0458 /* ArchiveView.swift in Sources */,
 				4833595326FCF5D1004F0458 /* LoadMapView.swift in Sources */,
-				4833595426FCF5D1004F0458 /* SNDFileView.swift in Sources */,
 				4833595526FCF5D1004F0458 /* MapListView.swift in Sources */,
 				4833595626FCF5D1004F0458 /* ProcessMapView.swift in Sources */,
-				4833595726FCF5D1004F0458 /* VIDFileView.swift in Sources */,
+				487D62C92705DDD300E77C03 /* DebugTileView.swift in Sources */,
 				4833595826FCF5D1004F0458 /* View+Extension.swift in Sources */,
 				4833595926FCF5D1004F0458 /* Data+Extensions.swift in Sources */,
 				4833595A26FCF5D1004F0458 /* ContentView.swift in Sources */,
 				4833595B26FCF5D1004F0458 /* TritiumApp.swift in Sources */,
-				4833595C26FCF5D1004F0458 /* DefinitionFileView.swift in Sources */,
+				487D62C52705DCD100E77C03 /* LoadingState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,21 +371,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				489AEAD626FAF652003AE746 /* LODArchiveView.swift in Sources */,
-				48FDE48126F47B2100A8238B /* GameFilesView.swift in Sources */,
 				487C325526F321FB00FC7459 /* ConfigView.swift in Sources */,
 				4833594926FC9F12004F0458 /* RenderMapView.swift in Sources */,
-				48FDE48C26F4C82600A8238B /* ArchiveView.swift in Sources */,
 				4833594526FB663C004F0458 /* LoadMapView.swift in Sources */,
-				48FDE49026F84AE600A8238B /* SNDFileView.swift in Sources */,
 				489AEAD826FAF7F4003AE746 /* MapListView.swift in Sources */,
 				4833594726FC5A35004F0458 /* ProcessMapView.swift in Sources */,
-				48FDE49226F85A9E00A8238B /* VIDFileView.swift in Sources */,
+				487D62C82705DDD300E77C03 /* DebugTileView.swift in Sources */,
 				48FDE47F26F47AE800A8238B /* View+Extension.swift in Sources */,
 				48FDE48926F4C78500A8238B /* Data+Extensions.swift in Sources */,
 				48FDE47C26F47A9300A8238B /* ContentView.swift in Sources */,
 				487C325326F321FB00FC7459 /* TritiumApp.swift in Sources */,
-				48FDE48E26F7314300A8238B /* DefinitionFileView.swift in Sources */,
+				487D62C42705DCCC00E77C03 /* LoadingState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
