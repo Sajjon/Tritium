@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ImageLoader.loadImage(terrain:):ImageLoader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ImageLoader.loadTerrainImage(atTile:):ImageLoader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ImageLoader.imageFrom(pixelData:contentsHint:width:height:mirroring:palette:):ImageLoader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ImageLoader.imageFrom(pixelData:contentsHint:fullSize:rect:mirroring:palette:):ImageLoader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(CGImage)cgImage">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
