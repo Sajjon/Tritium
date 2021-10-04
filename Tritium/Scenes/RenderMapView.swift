@@ -34,6 +34,13 @@ struct RenderMapView: View {
     @State private var debugTile: ProcessedMap.Tile? = nil
     
     var body: some View {
+        ZStack {
+            terrainView
+            objectsView
+        }
+    }
+    
+    var terrainView: some View {
         LazyVGrid(
             columns: model.columns,
             alignment: .center,
@@ -51,14 +58,32 @@ struct RenderMapView: View {
             }
         }
     }
+    
+    var objectsView: some View {
+        ForEach(model.objects) { object in
+            Image(
+                decorative: object.image.cgImage,
+                scale: 1.0
+            )
+                .frame(
+                    width: CGFloat(object.width) * Model.tileSize,
+                    height: CGFloat(object.height) * Model.tileSize
+                ).position(
+                    x: CGFloat(object.origin.x) * Model.tileSize,
+                    y: CGFloat(object.origin.y) * Model.tileSize
+                )
+        }
+    }
 }
 
 // MARK: Model
 extension RenderMapView {
     final class Model: ObservableObject {
+        static let tileSize: CGFloat = 32
         @Published var columns: [GridItem]
         
         @Published var tiles: [ProcessedMap.Tile]
+        @Published var objects: [ProcessedMap.Object]
         
         private let processedMap: ProcessedMap
         fileprivate let assets: Assets
@@ -69,14 +94,15 @@ extension RenderMapView {
             
             columns = .init(
                 repeating: .init(
-                    .flexible(minimum: 32, maximum: 32),
+                    .flexible(minimum: Model.tileSize, maximum: Model.tileSize),
                     spacing: 0,
                     alignment: .center
                 ),
                 count: processedMap.width
             )
             
-            tiles = processedMap.aboveGroundTiles
+            tiles = processedMap.aboveGround.tiles
+            objects = processedMap.aboveGround.objects
             
         }
     }
@@ -92,6 +118,13 @@ extension RenderMapView {
 extension ProcessedMap.Tile: Identifiable {
     public typealias ID = Position
     public var id: ID { position }
+}
+
+
+// MARK: ProcessedMap.Object + Identifiable
+extension ProcessedMap.Object: Identifiable {
+    public typealias ID = Map.Object
+    public var id: ID { self.mapObject }
 }
 
 
