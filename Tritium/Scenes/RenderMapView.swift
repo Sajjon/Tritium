@@ -69,8 +69,8 @@ struct RenderMapView: View {
                     width: CGFloat(object.width) * Model.tileSize,
                     height: CGFloat(object.height) * Model.tileSize
                 ).position(
-                    x: CGFloat(object.origin.x) * Model.tileSize,
-                    y: CGFloat(object.origin.y) * Model.tileSize
+                    x: CGFloat(object.position.x) * Model.tileSize,
+                    y: CGFloat(object.position.y) * Model.tileSize
                 )
         }
     }
