@@ -4,7 +4,7 @@
 Tritium - H3 - is an open source frontend (GUI) for Heroes of Might and Magic III in pure Swift, powered by the Swift HoMM3 game engine [`Makt`](https://github.com/Sajjon/Makt)
 
 > 🚨 Status NOT playable yet 🚨
-I've just begun parsing orignal game resources.
+I've just managed to render maps, using original game resources that `Makt` extracts. But performance is terrible, since I've literally put zero effort into this. So next is to come up with a good solution. Maybe generate a PNG image for the whole map and use a **single** [SwiftUI `Image` View](https://developer.apple.com/documentation/swiftui/image) (instead of tens of thousands).
 
 > ⚠️ You MUST have the resources (DATA, Maps and Music files) from the original game in order to play this.
 
