@@ -68,8 +68,8 @@ struct RenderMapView: View {
                     scale: 1.0
                 )
                     .position(
-                        x: CGFloat(object.position.x) * .pixelsPerTile,
-                        y: CGFloat(object.position.y) * .pixelsPerTile
+                        x: ((CGFloat(object.position.x + 1) * .pixelsPerTile) - CGFloat(object.image.width)/2),
+                        y: ((CGFloat(object.position.y + 1) * .pixelsPerTile) - CGFloat(object.image.height)/2)
                     )
             }
         }
