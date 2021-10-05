@@ -67,12 +67,13 @@ struct RenderMapView: View {
                     decorative: object.image.cgImage,
                     scale: 1.0
                 )
+                    .frame(width: CGFloat(object.image.width), height: CGFloat(object.image.height))
                     .position(
                         x: ((CGFloat(object.position.x + 1) * .pixelsPerTile) - CGFloat(object.image.width)/2),
                         y: ((CGFloat(object.position.y + 1) * .pixelsPerTile) - CGFloat(object.image.height)/2)
                     )
             }
-        }
+        }   .clipped()
     }
 }
 
