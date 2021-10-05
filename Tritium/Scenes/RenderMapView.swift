@@ -38,7 +38,9 @@ struct RenderMapView: View {
             terrainView
             objectsView
         }
+        .fixedSize(horizontal: true, vertical: true)
         .frame(width: model.width, height: model.height)
+        .padding()
     }
     
     var terrainView: some View {
@@ -105,8 +107,7 @@ extension RenderMapView {
             )
             
             tiles = processedMap.aboveGround.tiles
-            objects = processedMap.aboveGround.objects.sorted(by: { $0.zAxisIndex > $1.zAxisIndex })
-            
+            objects = processedMap.aboveGround.objects
         }
     }
 }

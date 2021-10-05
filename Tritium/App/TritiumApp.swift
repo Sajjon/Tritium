@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-
 @main
 struct TritiumApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .fixedSize(horizontal: false, vertical: false)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(minWidth: 768, idealWidth: 1536, maxWidth: .infinity, minHeight: 480, idealHeight: 960, maxHeight: .infinity)
         }
     }
 }
