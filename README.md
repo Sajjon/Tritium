@@ -1,3 +1,5 @@
+![Tritium: Heroes 3 in Swift](https://github.com/Sajjon/Tritium/blob/main/Tritium/Assets.xcassets/AppIcon.appiconset/h3_icon_128.png)
+
 # Tritium
 Tritium - H3 - is an open source frontend (GUI) for Heroes of Might and Magic III in pure Swift, powered by the Swift HoMM3 game engine [`Makt`](https://github.com/Sajjon/Makt)
 
