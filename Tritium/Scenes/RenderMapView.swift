@@ -23,7 +23,7 @@ extension TileView {
                 Image(decorative: image.cgImage, scale: 1.0)
             }
         }
-        .frame(width: 32, height: 32)
+        .frame(width: .pixelsPerTile, height: .pixelsPerTile)
         .onTapGesture(perform: onTap)
     }
     
@@ -38,12 +38,13 @@ struct RenderMapView: View {
             terrainView
             objectsView
         }
+        .frame(width: model.width, height: model.height)
     }
     
     var terrainView: some View {
         LazyVGrid(
             columns: model.columns,
-            alignment: .center,
+            alignment: .leading,
             spacing: 0
         ) {
             ForEach(model.tiles) { tile in
@@ -60,18 +61,17 @@ struct RenderMapView: View {
     }
     
     var objectsView: some View {
-        ForEach(model.objects) { object in
-            Image(
-                decorative: object.image.cgImage,
-                scale: 1.0
-            )
-                .frame(
-                    width: CGFloat(object.width) * Model.tileSize,
-                    height: CGFloat(object.height) * Model.tileSize
-                ).position(
-                    x: CGFloat(object.position.x) * Model.tileSize,
-                    y: CGFloat(object.position.y) * Model.tileSize
+        ZStack {
+            ForEach(model.objects) { object in
+                Image(
+                    decorative: object.image.cgImage,
+                    scale: 1.0
                 )
+                    .position(
+                        x: CGFloat(object.position.x) * .pixelsPerTile,
+                        y: CGFloat(object.position.y) * .pixelsPerTile
+                    )
+            }
         }
     }
 }
@@ -79,13 +79,15 @@ struct RenderMapView: View {
 // MARK: Model
 extension RenderMapView {
     final class Model: ObservableObject {
-        static let tileSize: CGFloat = 32
+
         @Published var columns: [GridItem]
         
         @Published var tiles: [ProcessedMap.Tile]
         @Published var objects: [ProcessedMap.Object]
         
         private let processedMap: ProcessedMap
+        var width: CGFloat { CGFloat(processedMap.size.width) * .pixelsPerTile }
+        var height: CGFloat { CGFloat(processedMap.size.height) * .pixelsPerTile }
         fileprivate let assets: Assets
         
         init(processedMap: ProcessedMap, assets: Assets) {
@@ -94,15 +96,15 @@ extension RenderMapView {
             
             columns = .init(
                 repeating: .init(
-                    .flexible(minimum: Model.tileSize, maximum: Model.tileSize),
+                    .fixed(CGFloat.pixelsPerTile),
                     spacing: 0,
-                    alignment: .center
+                    alignment: .topLeading
                 ),
                 count: processedMap.width
             )
             
             tiles = processedMap.aboveGround.tiles
-            objects = processedMap.aboveGround.objects
+            objects = processedMap.aboveGround.objects.sorted(by: { $0.zAxisIndex > $1.zAxisIndex })
             
         }
     }
