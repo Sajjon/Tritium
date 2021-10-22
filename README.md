@@ -15,7 +15,7 @@ I've just managed to render maps, using original game resources that `Makt` extr
 This is the map called `"Freedom"` in Tritium, rendered using SwiftUI with a trivial completely non-optimized solution where each sprite is its own Image view. Performance is bad and scrolling in larger maps is unfeasibly bad.
 
 ## Focus
-I put zero effort into the UI of the app. In this repo - the frontend Tritium - I focus on rendering maps only. Nothing else such as menus or nice SwiftUI code. Because I suck at SwiftUI. But most work is really done in the repo for the backend [`Makt`](https://github.com/Sajjon/Makt). 
+In this repo - the frontend Tritium - I focus on rendering maps only. Nothing else such as menus or nice SwiftUI code. Because I suck at SwiftUI. But most work is really done in the repo for the backend [`Makt`](https://github.com/Sajjon/Makt). 
 
 # Copyright
 All rights for the original game and its resources belong to former [The 3DO Company](https://en.wikipedia.org/wiki/The_3DO_Company). These rights were transferred to [Ubisoft](https://www.ubisoft.com/). We do not encourage and do not support any form of illegal usage of the original game. We strongly advise to purchase the original game on [Ubisoft Store](https://store.ubi.com/eu/game?pid=575ffd9ba3be1633568b4d8c) or [GOG](https://www.gog.com/game/heroes_of_might_and_magic_3_complete_edition).
